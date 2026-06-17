@@ -28,15 +28,11 @@
         --mint: #b8f2d9;
         --shadow: rgba(107, 63, 77, 0.16);
         --shadow-deep: rgba(107, 63, 77, 0.28);
-
-        /* Fluid spacing scale */
         --sp-xs: clamp(6px, 1.5vw, 10px);
         --sp-sm: clamp(10px, 2.5vw, 16px);
         --sp-md: clamp(16px, 4vw, 24px);
         --sp-lg: clamp(22px, 5.5vw, 36px);
         --sp-xl: clamp(30px, 7vw, 50px);
-
-        /* Fluid font scale */
         --fs-xs: clamp(11px, 2.8vw, 13px);
         --fs-sm: clamp(12px, 3.2vw, 15px);
         --fs-md: clamp(14px, 3.8vw, 17px);
@@ -44,14 +40,12 @@
         --fs-xl: clamp(28px, 8vw, 46px);
         --fs-hero: clamp(32px, 9vw, 52px);
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
       }
-
       html,
       body {
         width: 100%;
@@ -60,17 +54,15 @@
         font-family: "Quicksand", sans-serif;
         background: var(--cream);
         color: var(--cocoa);
-        /* Prevent elastic bounce on iOS */
         overscroll-behavior: none;
       }
-
       #app {
         position: relative;
         width: 100%;
         height: 100%;
       }
 
-      /* ---- scenes ---- */
+      /* scenes */
       .scene {
         position: absolute;
         inset: 0;
@@ -81,7 +73,6 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.55s ease;
-        /* Safe area insets for notch phones */
         padding-left: env(safe-area-inset-left);
         padding-right: env(safe-area-inset-right);
       }
@@ -90,7 +81,7 @@
         pointer-events: auto;
       }
 
-      /* ---- floating petals ---- */
+      /* petals */
       .petal-fall {
         position: absolute;
         top: -40px;
@@ -105,7 +96,7 @@
         }
       }
 
-      /* =================== SCENE 1: WELCOME =================== */
+      /* SCENE 1 */
       #scene-welcome {
         background: radial-gradient(
           circle at 50% 0%,
@@ -210,7 +201,6 @@
         transition:
           transform 0.2s ease,
           box-shadow 0.2s ease;
-        /* Large tap target */
         min-height: 52px;
         touch-action: manipulation;
       }
@@ -222,7 +212,7 @@
         border-bottom-width: 2px;
       }
 
-      /* =================== SCENE 2: GAME =================== */
+      /* SCENE 2 */
       #scene-game {
         background: radial-gradient(circle at 50% 0%, #e4ecff 0%, #d8e6ff 70%);
       }
@@ -280,7 +270,6 @@
         color: var(--cocoa-soft);
         padding: 0 8px;
       }
-
       .game-mascots {
         position: absolute;
         bottom: max(18px, env(safe-area-inset-bottom, 18px));
@@ -311,7 +300,6 @@
         transition: transform 0.18s ease;
         z-index: 3;
         touch-action: none;
-        /* Better tap target on mobile */
         padding: 6px;
       }
       .floating-heart:hover {
@@ -401,7 +389,7 @@
         }
       }
 
-      /* =================== SCENE 3: LOADING =================== */
+      /* SCENE 3 */
       #scene-loading {
         background: radial-gradient(
           circle at 50% 40%,
@@ -460,7 +448,7 @@
         font-size: var(--fs-sm);
       }
 
-      /* =================== SCENE 4: REVEAL =================== */
+      /* SCENE 4 */
       #scene-reveal {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
@@ -510,7 +498,6 @@
         color: var(--cocoa-soft);
         font-weight: 600;
       }
-
       .reveal-inner {
         width: 100%;
         max-width: 420px;
@@ -576,7 +563,6 @@
         right: 2px;
         filter: drop-shadow(0 3px 6px var(--shadow));
       }
-
       .envelopes {
         display: flex;
         flex-direction: column;
@@ -601,7 +587,7 @@
           box-shadow 0.25s ease,
           opacity 0.3s ease;
         touch-action: manipulation;
-        min-height: 64px; /* good tap target */
+        min-height: 64px;
       }
       .envelope-btn:hover:not(:disabled) {
         transform: translateY(-4px) scale(1.02);
@@ -628,7 +614,6 @@
         color: var(--cocoa-soft);
         font-weight: 600;
       }
-
       .btn-continue {
         font-family: "Baloo 2", sans-serif;
         font-weight: 700;
@@ -659,7 +644,7 @@
         transform: none;
       }
 
-      /* ---- letter modal ---- */
+      /* letter modal */
       .letter-overlay {
         position: fixed;
         inset: 0;
@@ -673,7 +658,6 @@
         transition: opacity 0.35s ease;
         padding: 0;
       }
-      /* On larger screens, center the modal */
       @media (min-height: 640px) and (min-width: 480px) {
         .letter-overlay {
           align-items: center;
@@ -708,7 +692,6 @@
       .letter-overlay.show .letter-card {
         transform: translateY(0);
       }
-      /* drag handle hint */
       .letter-card::before {
         content: "";
         display: block;
@@ -756,7 +739,7 @@
         touch-action: manipulation;
       }
 
-      /* =================== SCENE 5: ANSWER =================== */
+      /* SCENE 5 */
       #scene-answer {
         background: radial-gradient(
           circle at 50% 20%,
@@ -917,7 +900,6 @@
       .btn-no:active {
         transform: translateY(1px) scale(0.98);
       }
-
       .answer-result-card {
         margin-top: var(--sp-sm);
         background: var(--white);
@@ -961,48 +943,51 @@
         font-weight: 600;
       }
 
-      .reply-box {
+      /* YES message box */
+      .yes-message-box {
         margin-top: var(--sp-sm);
-        text-align: left;
         display: none;
+        text-align: left;
       }
-      .reply-box.show {
+      .yes-message-box.show {
         display: block;
         animation: result-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
-      .reply-label {
+      .yes-msg-label {
         font-family: "Baloo 2", sans-serif;
         font-size: var(--fs-xs);
         font-weight: 700;
         color: var(--cocoa);
         margin-bottom: 8px;
       }
-      .reply-textarea {
+      .yes-msg-textarea {
         width: 100%;
         min-height: 90px;
         border: 2px solid var(--bubblegum);
         border-radius: 16px;
         padding: 12px 14px;
         font-family: "Quicksand", sans-serif;
-        font-size: clamp(13px, 3.5vw, 14px);
+        font-size: 16px;
         color: var(--cocoa);
         background: var(--cream);
         resize: vertical;
         outline: none;
         transition: border-color 0.2s ease;
-        /* prevent iOS zoom on focus (font-size >= 16px) */
-        font-size: 16px;
       }
-      .reply-textarea:focus {
+      .yes-msg-textarea:focus {
         border-color: var(--bubblegum-deep);
       }
-      .reply-textarea::placeholder {
+      .yes-msg-textarea::placeholder {
         color: var(--cocoa-soft);
         opacity: 0.6;
       }
-      .btn-send-reply {
-        margin-top: 12px;
-        width: 100%;
+      .yes-msg-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .btn-save-yes {
+        flex: 1;
         font-family: "Baloo 2", sans-serif;
         font-weight: 700;
         font-size: var(--fs-sm);
@@ -1022,13 +1007,32 @@
         min-height: 52px;
         touch-action: manipulation;
       }
-      .btn-send-reply:hover {
+      .btn-save-yes:hover {
         transform: translateY(-2px);
       }
-      .btn-send-reply:active {
-        transform: translateY(1px);
+      .btn-save-yes:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
       }
-      .reply-sent-note {
+      .btn-skip-yes {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        background: var(--white);
+        border: 2px solid var(--cream-deep);
+        border-radius: 50px;
+        padding: 10px 18px;
+        cursor: pointer;
+        min-height: 52px;
+        touch-action: manipulation;
+        transition: transform 0.2s ease;
+      }
+      .btn-skip-yes:hover {
+        transform: translateY(-2px);
+      }
+      .yes-saved-note {
         margin-top: 10px;
         font-size: var(--fs-xs);
         color: var(--cocoa-soft);
@@ -1036,26 +1040,19 @@
         text-align: center;
         display: none;
       }
-      .reply-sent-note.show {
+      .yes-saved-note.show {
         display: block;
       }
 
-      /* ---- confetti ---- */
-      .confetti-piece {
-        position: fixed;
-        top: -30px;
-        z-index: 40;
-        pointer-events: none;
-        animation: confetti-fall linear forwards;
+      /* closing note (for NO) */
+      .reply-box {
+        margin-top: var(--sp-sm);
+        display: none;
       }
-      @keyframes confetti-fall {
-        to {
-          transform: translateY(110vh) rotate(540deg);
-          opacity: 0.3;
-        }
+      .reply-box.show {
+        display: block;
+        animation: result-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
-
-      /* ---- closing note ---- */
       .closing-note {
         position: relative;
         overflow: hidden;
@@ -1162,15 +1159,28 @@
         animation: result-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
-      /* ---- reduced motion ---- */
+      /* confetti */
+      .confetti-piece {
+        position: fixed;
+        top: -30px;
+        z-index: 40;
+        pointer-events: none;
+        animation: confetti-fall linear forwards;
+      }
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(110vh) rotate(540deg);
+          opacity: 0.3;
+        }
+      }
+
+      /* reduced motion */
       @media (prefers-reduced-motion: reduce) {
         * {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
         }
       }
-
-      /* ---- very small screens (< 360px) ---- */
       @media (max-width: 359px) {
         .greeting {
           font-size: 26px;
@@ -1187,8 +1197,6 @@
           width: 140px;
         }
       }
-
-      /* ---- landscape on mobile ---- */
       @media (max-height: 500px) and (orientation: landscape) {
         .welcome-card {
           flex-direction: row;
@@ -1225,11 +1233,21 @@
           height: 52px;
         }
       }
+
+      .pin-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--cream-deep);
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease;
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <!-- ============ SCENE 1: WELCOME ============ -->
+      <!-- SCENE 1: WELCOME -->
       <div class="scene active" id="scene-welcome">
         <div class="welcome-card">
           <div class="mascot-wrap">
@@ -1245,7 +1263,7 @@
         </div>
       </div>
 
-      <!-- ============ SCENE 2: GAME ============ -->
+      <!-- SCENE 2: GAME -->
       <div class="scene" id="scene-game">
         <div class="game-hud">
           <div class="hud-pill">
@@ -1266,7 +1284,7 @@
         </div>
       </div>
 
-      <!-- ============ SCENE 3: LOADING ============ -->
+      <!-- SCENE 3: LOADING -->
       <div class="scene" id="scene-loading">
         <div class="loading-wrap">
           <div class="loading-mascots">
@@ -1283,7 +1301,7 @@
         </div>
       </div>
 
-      <!-- ============ SCENE 4: REVEAL ============ -->
+      <!-- SCENE 4: REVEAL -->
       <div class="scene" id="scene-reveal">
         <div class="notif-toast" id="notifToast">
           <span class="notif-icon">🔔</span>
@@ -1292,14 +1310,12 @@
             <div class="notif-body">semoga kamu suka ya &lt;3</div>
           </div>
         </div>
-
         <div class="reveal-inner">
           <div class="polaroid">
             <span class="ribbon-deco">🎀</span>
             <div class="polaroid-photo" id="polaroidPhoto">📷</div>
             <div class="polaroid-caption">buat kamu &lt;3</div>
           </div>
-
           <div class="envelopes">
             <button class="envelope-btn" id="envelope1">
               <span class="envelope-icon">💌</span>
@@ -1312,18 +1328,19 @@
               <span class="envelope-icon">💌</span>
               <span>
                 <div class="envelope-label">Satu Lagi...</div>
-                <div class="envelope-sub">Buka surat pertama dulu, ya</div>
+                <div class="envelope-sub" id="envelope2Sub">
+                  Buka surat pertama dulu, ya
+                </div>
               </span>
             </button>
           </div>
-
           <button class="btn-continue" id="continueBtn" disabled>
             Lanjut &nbsp;🐾
           </button>
         </div>
       </div>
 
-      <!-- ============ SCENE 5: ANSWER ============ -->
+      <!-- SCENE 5: ANSWER -->
       <div class="scene" id="scene-answer">
         <div class="answer-card" id="answerCard">
           <div class="answer-eyebrow">Pertanyaan Terakhir</div>
@@ -1333,7 +1350,7 @@
             <span class="answer-heartbeat">💓</span>
           </div>
           <div class="answer-question">Jadi... gimana jawaban kamu?</div>
-          <div class="answer-subtext">
+          <div class="answer-subtext" id="answerSubtext">
             Nggak ada jawaban yang salah, kok. Aku cuma pengen tahu, boleh nggak
             aku coba lebih dekat sama kamu?
           </div>
@@ -1345,10 +1362,32 @@
               Kasih aku waktu dulu, ya 🙈
             </button>
           </div>
+
           <div class="answer-result-card" id="answerResultCard">
             <span class="answer-result-icon" id="answerResultIcon">🎉</span>
             <div class="answer-result-text" id="answerResultText"></div>
             <div class="answer-result-sub" id="answerResultSub"></div>
+
+            <!-- YES: kotak pesan opsional -->
+            <div class="yes-message-box" id="yesMessageBox">
+              <div class="yes-msg-label">
+                Mau tulis sesuatu buat dia? (opsional) 💬
+              </div>
+              <textarea
+                class="yes-msg-textarea"
+                id="yesTextarea"
+                placeholder="Tulis pesan kamu di sini..."
+              ></textarea>
+              <div class="yes-msg-actions">
+                <button class="btn-save-yes" id="btnSaveYes">Kirim 💌</button>
+                <button class="btn-skip-yes" id="btnSkipYes">Lewati</button>
+              </div>
+              <div class="yes-saved-note" id="yesSavedNote">
+                ✅ Tersimpan! Dia pasti seneng baca ini 🌸
+              </div>
+            </div>
+
+            <!-- NO: closing note -->
             <div class="reply-box" id="replyBox">
               <div class="closing-note" id="closingNote">
                 <div class="closing-stars" id="closingStars"></div>
@@ -1364,7 +1403,7 @@
       </div>
     </div>
 
-    <!-- Secret viewer trigger — tiny heart in corner -->
+    <!-- Secret button -->
     <button
       id="secretBtn"
       aria-label="Lihat hasil"
@@ -1425,7 +1464,6 @@
           box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.22);
         "
       >
-        <!-- drag handle -->
         <div
           style="
             width: 40px;
@@ -1436,8 +1474,6 @@
             margin: 0 auto 20px;
           "
         ></div>
-
-        <!-- Lock screen -->
         <div id="secretLock">
           <div style="text-align: center; margin-bottom: 20px">
             <div style="font-size: 36px; margin-bottom: 8px">🔐</div>
@@ -1497,8 +1533,6 @@
             "
           ></div>
         </div>
-
-        <!-- Result screen (hidden until unlocked) -->
         <div id="secretResult" style="display: none">
           <div style="text-align: center; margin-bottom: 22px">
             <div
@@ -1521,7 +1555,7 @@
           <div id="resultDisplay"></div>
           <button
             onclick="
-              document.getElementById('secretOverlay').style.opacity = 0;
+              document.getElementById('secretOverlay').style.opacity = '0';
               document.getElementById('secretOverlay').style.pointerEvents =
                 'none';
             "
@@ -1551,14 +1585,12 @@
       </div>
     </div>
 
-    <!-- music via Web Audio API — no file needed -->
-
     <script>
-      /* ===================== KONFIGURASI — EDIT DI SINI ===================== */
+      /* ===================== KONFIGURASI ===================== */
       const CONFIG = {
         name: "Nisa",
         heartsTarget: 14,
-        photoUrl: "",
+        photoUrl: "ayangky.jpeg",
         letters: [
           {
             title: "Surat Pertama",
@@ -1593,9 +1625,8 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
           yes: "Yeay!! 🎉 makasih udah bilang iya, aku seneng banget!!",
           no: "Nggak apa-apa, aku tunggu kapan pun kamu siap 🤍",
         },
-        whatsappNumber: "6281367381826",
       };
-      /* ======================================================================= */
+      /* ======================================================= */
 
       document.getElementById("nameDisplay").textContent = CONFIG.name;
       document.getElementById("heartTarget").textContent = CONFIG.heartsTarget;
@@ -1607,15 +1638,11 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
       /* ============ MASCOT SVG ============ */
       function catSVG({ furColor, cheeks, expression }) {
         const eyes = {
-          happy: `<path d="M35 46 Q39 41 43 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M57 46 Q61 41 65 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
-          excited: `<circle cx="39" cy="45" r="3.4" fill="#3d2630"/><circle cx="61" cy="45" r="3.4" fill="#3d2630"/>
-              <circle cx="40.5" cy="43.5" r="1.1" fill="#fff"/><circle cx="62.5" cy="43.5" r="1.1" fill="#fff"/>`,
+          happy: `<path d="M35 46 Q39 41 43 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M57 46 Q61 41 65 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+          excited: `<circle cx="39" cy="45" r="3.4" fill="#3d2630"/><circle cx="61" cy="45" r="3.4" fill="#3d2630"/><circle cx="40.5" cy="43.5" r="1.1" fill="#fff"/><circle cx="62.5" cy="43.5" r="1.1" fill="#fff"/>`,
           focus: `<ellipse cx="39" cy="46" rx="2.6" ry="3.6" fill="#3d2630"/><ellipse cx="61" cy="46" rx="2.6" ry="3.6" fill="#3d2630"/>`,
-          shy: `<path d="M35 47 Q39 44 43 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M57 47 Q61 44 65 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
-          hopeful: `<circle cx="39" cy="45" r="3.6" fill="#3d2630"/><circle cx="61" cy="45" r="3.6" fill="#3d2630"/>
-              <circle cx="40.7" cy="43" r="1.3" fill="#fff"/><circle cx="62.7" cy="43" r="1.3" fill="#fff"/>`,
+          shy: `<path d="M35 47 Q39 44 43 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M57 47 Q61 44 65 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+          hopeful: `<circle cx="39" cy="45" r="3.6" fill="#3d2630"/><circle cx="61" cy="45" r="3.6" fill="#3d2630"/><circle cx="40.7" cy="43" r="1.3" fill="#fff"/><circle cx="62.7" cy="43" r="1.3" fill="#fff"/>`,
           nervous: `<circle cx="39" cy="46" r="3" fill="#3d2630"/><circle cx="61" cy="46" r="3" fill="#3d2630"/>`,
         };
         const mouth = {
@@ -1627,25 +1654,22 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
           nervous: `<path d="M45 58 Q50 56 55 58" stroke="#3d2630" stroke-width="2.4" fill="none" stroke-linecap="round"/>`,
         };
         const blush = cheeks
-          ? `<ellipse cx="32" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/>
-                          <ellipse cx="68" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/>`
+          ? `<ellipse cx="32" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/><ellipse cx="68" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/>`
           : "";
-        return `
-    <g>
-      <ellipse cx="50" cy="80" rx="26" ry="10" fill="${furColor}" opacity="0.35"/>
-      <path d="M50 20 L38 8 L42 26 Z" fill="${furColor}"/>
-      <path d="M50 20 L62 8 L58 26 Z" fill="${furColor}"/>
-      <path d="M42 14 L38 9 L41 18 Z" fill="#ffe3ee"/>
-      <path d="M58 14 L62 9 L59 18 Z" fill="#ffe3ee"/>
-      <circle cx="50" cy="48" r="30" fill="${furColor}"/>
-      <ellipse cx="50" cy="56" rx="16" ry="13" fill="#fff8f0"/>
-      ${blush}
-      ${eyes[expression]}
-      ${mouth[expression]}
-      <path d="M30 50 Q24 50 20 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
-      <path d="M70 50 Q76 50 80 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
-    </g>
-  `;
+        return `<g>
+          <ellipse cx="50" cy="80" rx="26" ry="10" fill="${furColor}" opacity="0.35"/>
+          <path d="M50 20 L38 8 L42 26 Z" fill="${furColor}"/>
+          <path d="M50 20 L62 8 L58 26 Z" fill="${furColor}"/>
+          <path d="M42 14 L38 9 L41 18 Z" fill="#ffe3ee"/>
+          <path d="M58 14 L62 9 L59 18 Z" fill="#ffe3ee"/>
+          <circle cx="50" cy="48" r="30" fill="${furColor}"/>
+          <ellipse cx="50" cy="56" rx="16" ry="13" fill="#fff8f0"/>
+          ${blush}
+          ${eyes[expression]}
+          ${mouth[expression]}
+          <path d="M30 50 Q24 50 20 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M70 50 Q76 50 80 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </g>`;
       }
 
       const MASCOTS = {
@@ -1666,7 +1690,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
       mountMascot("mascotAnswerA", MASCOTS.pink, "nervous");
       mountMascot("mascotAnswerB", MASCOTS.lavender, "shy");
 
-      /* ---- scene switching ---- */
+      /* scene switching */
       function showScene(id) {
         document
           .querySelectorAll(".scene")
@@ -1674,7 +1698,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         document.getElementById(id).classList.add("active");
       }
 
-      /* ---- petals ---- */
+      /* petals */
       function spawnPetals(containerId, symbols, count) {
         const container = document.getElementById(containerId);
         for (let i = 0; i < count; i++) {
@@ -1690,14 +1714,14 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
       }
       spawnPetals("scene-welcome", ["🌸", "💗", "✨", "🐾"], 16);
 
-      /* ---- start ---- */
+      /* start */
       document.getElementById("startBtn").addEventListener("click", () => {
         startLofiMusic();
         showScene("scene-game");
         startGame();
       });
 
-      /* ---- game ---- */
+      /* game */
       let collected = 0,
         gameRunning = false,
         spawnTimer = null;
@@ -1728,7 +1752,6 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         document.getElementById("gameProgressFill").style.width = "0%";
         document.getElementById("gameArea").innerHTML = "";
         spawnTimer = setInterval(spawnHeart, 520);
-
         const area = document.getElementById("gameArea");
         area.addEventListener("mousemove", onPointerMove);
         area.addEventListener("touchmove", onPointerMove, { passive: true });
@@ -1815,10 +1838,8 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
           : ["❤️", "💖", "💕"][Math.floor(Math.random() * 3)];
         const areaRect = area.getBoundingClientRect();
         const hudH = document.querySelector(".game-hud").offsetHeight + 30;
-        const mascotH = 90;
         const x = 14 + Math.random() * (areaRect.width - 70);
-        const y =
-          hudH + Math.random() * (areaRect.height - hudH - mascotH - 60);
+        const y = hudH + Math.random() * (areaRect.height - hudH - 90 - 60);
         heart.style.left = x + "px";
         heart.style.top = y + "px";
         heart.style.animationDelay = Math.random() * 1.2 + "s";
@@ -1831,44 +1852,40 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         };
         activeHearts.push(heartItem);
 
-        heart.addEventListener(
-          "click",
-          () => {
-            if (!heart.parentNode) return;
-            collected++;
-            document.getElementById("heartCount").textContent = collected;
-            document.getElementById("gameProgressFill").style.width =
-              (collected / CONFIG.heartsTarget) * 100 + "%";
-            const pop = document.createElement("div");
-            pop.className = "heart-pop";
-            pop.textContent = isNaughty
-              ? catchTexts[Math.floor(Math.random() * catchTexts.length)]
-              : "+1 💗";
-            pop.style.left = heart.style.left;
-            pop.style.top = heart.style.top;
-            area.appendChild(pop);
-            setTimeout(() => pop.remove(), 750);
-            heart.remove();
-            activeHearts = activeHearts.filter((h) => h !== heartItem);
-            if (collected >= CONFIG.heartsTarget) {
-              clearInterval(spawnTimer);
-              mountMascot("mascotGameA", MASCOTS.pink, "excited");
-              mountMascot("mascotGameB", MASCOTS.lavender, "excited");
-              setTimeout(() => {
-                showScene("scene-loading");
-                runLoading();
-              }, 600);
-            }
-          },
-          { once: true },
-        );
+        const onCatch = () => {
+          if (!heart.parentNode) return;
+          collected++;
+          document.getElementById("heartCount").textContent = collected;
+          document.getElementById("gameProgressFill").style.width =
+            (collected / CONFIG.heartsTarget) * 100 + "%";
+          const pop = document.createElement("div");
+          pop.className = "heart-pop";
+          pop.textContent = isNaughty
+            ? catchTexts[Math.floor(Math.random() * catchTexts.length)]
+            : "+1 💗";
+          pop.style.left = heart.style.left;
+          pop.style.top = heart.style.top;
+          area.appendChild(pop);
+          setTimeout(() => pop.remove(), 750);
+          heart.remove();
+          activeHearts = activeHearts.filter((h) => h !== heartItem);
+          if (collected >= CONFIG.heartsTarget) {
+            clearInterval(spawnTimer);
+            mountMascot("mascotGameA", MASCOTS.pink, "excited");
+            mountMascot("mascotGameB", MASCOTS.lavender, "excited");
+            setTimeout(() => {
+              showScene("scene-loading");
+              runLoading();
+            }, 600);
+          }
+        };
 
-        // Touch support for hearts
+        heart.addEventListener("click", onCatch, { once: true });
         heart.addEventListener(
           "touchstart",
           (e) => {
             e.preventDefault();
-            heart.click();
+            onCatch();
           },
           { passive: false, once: true },
         );
@@ -1880,7 +1897,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         }, 4500);
       }
 
-      /* ---- loading ---- */
+      /* loading */
       const loadingMessages = [
         "Lagi nyusun kata-kata...",
         "Nulis ulang biar nggak typo...",
@@ -1916,40 +1933,40 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         }, 160);
       }
 
-      /* ---- reveal ---- */
+      /* reveal */
       function triggerReveal() {
         const toast = document.getElementById("notifToast");
         setTimeout(() => toast.classList.add("show"), 300);
         setTimeout(() => toast.classList.remove("show"), 3200);
       }
 
-      /* ---- letter modal ---- */
+      /* letter modal */
       const overlay = document.createElement("div");
       overlay.className = "letter-overlay";
       overlay.id = "letterOverlay";
       overlay.innerHTML = `
-  <div class="letter-card">
-    <div class="letter-heading" id="letterHeading"></div>
-    <div class="letter-body" id="letterBody"></div>
-    <button class="letter-close" id="letterCloseBtn">Tutup ✓</button>
-  </div>
-`;
+        <div class="letter-card">
+          <div class="letter-heading" id="letterHeading"></div>
+          <div class="letter-body" id="letterBody"></div>
+          <button class="letter-close" id="letterCloseBtn">Tutup ✓</button>
+        </div>`;
       document.getElementById("app").appendChild(overlay);
 
-      let lettersOpened = 0;
+      let letter1Opened = false;
+
       function openLetter(index) {
         const letter = CONFIG.letters[index];
         document.getElementById("letterHeading").textContent = letter.title;
         document.getElementById("letterBody").textContent = letter.text;
         overlay.classList.add("show");
-        if (index === 0) {
+        if (index === 0 && !letter1Opened) {
+          letter1Opened = true;
           const env2 = document.getElementById("envelope2");
           env2.disabled = false;
-          env2.querySelector(".envelope-sub").textContent = "Ketuk untuk buka";
-        }
-        lettersOpened++;
-        if (lettersOpened >= 1)
+          document.getElementById("envelope2Sub").textContent =
+            "Ketuk untuk buka";
           document.getElementById("continueBtn").disabled = false;
+        }
       }
 
       document
@@ -1965,7 +1982,6 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         if (e.target === overlay) overlay.classList.remove("show");
       });
 
-      // Swipe down to close letter
       let touchStartY = 0;
       overlay.querySelector(".letter-card").addEventListener(
         "touchstart",
@@ -1987,7 +2003,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         .getElementById("continueBtn")
         .addEventListener("click", () => showScene("scene-answer"));
 
-      /* ---- answer ---- */
+      /* confetti */
       function spawnConfetti() {
         const colors = ["#ffb8d1", "#ff6fa3", "#c9b8ff", "#ffd66b", "#b8f2d9"];
         for (let i = 0; i < 40; i++) {
@@ -2005,20 +2021,28 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         }
       }
 
-      /* ── SAVE / LOAD RESULT ── */
+      /* save/load */
       const STORAGE_KEY = "utk_kamu_result_v1";
-
+      const APPS_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbz98sZyCwcqKi7E6wfgabucI2kSapUlk7pDp2DDLsiRAhGg-od0TOcTobFhtXWKTF6nWA/exec";
       function saveResult(answer, message) {
-        const data = {
-          answer, // 'yes' | 'no'
-          message: message || "",
-          timestamp: Date.now(),
-        };
         try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify({
+              answer,
+              message: message || "",
+              timestamp: Date.now(),
+            }),
+          );
         } catch (e) {}
+        fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answer, message: message || "" }),
+        }).catch(() => {});
       }
-
       function loadResult() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
@@ -2028,24 +2052,22 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         }
       }
 
-      /* ── YES ── */
+      /* YES */
       document.getElementById("btnYes").addEventListener("click", () => {
         mountMascot("mascotAnswerA", MASCOTS.pink, "excited");
         mountMascot("mascotAnswerB", MASCOTS.lavender, "excited");
         document.getElementById("answerButtons").style.display = "none";
-        document.querySelector(".answer-subtext").style.display = "none";
+        document.getElementById("answerSubtext").style.display = "none";
         document.getElementById("answerResultIcon").textContent = "🎉";
         document.getElementById("answerResultText").textContent =
           CONFIG.responses.yes;
         document.getElementById("answerResultSub").textContent =
           "mulai dari sekarang, kita coba pelan-pelan ya 🐾";
         document.getElementById("answerResultCard").classList.add("show");
-        spawnConfetti();
-
-        // Save immediately (no message yet), then show textarea
         saveResult("yes", "");
+        spawnConfetti();
         setTimeout(() => {
-          document.getElementById("yesMessageBox").style.display = "block";
+          document.getElementById("yesMessageBox").classList.add("show");
           document.getElementById("yesTextarea").focus();
         }, 900);
       });
@@ -2055,22 +2077,21 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         saveResult("yes", msg);
         document.getElementById("btnSaveYes").disabled = true;
         document.getElementById("btnSkipYes").disabled = true;
-        document.getElementById("btnSaveYes").style.opacity = "0.6";
-        document.getElementById("yesSavedNote").style.display = "block";
+        document.getElementById("yesSavedNote").classList.add("show");
         spawnConfetti();
       });
 
       document.getElementById("btnSkipYes").addEventListener("click", () => {
         saveResult("yes", "");
-        document.getElementById("yesMessageBox").style.display = "none";
+        document.getElementById("yesMessageBox").classList.remove("show");
       });
 
-      /* ── NO ── */
+      /* NO */
       document.getElementById("btnNo").addEventListener("click", () => {
         mountMascot("mascotAnswerA", MASCOTS.pink, "shy");
         mountMascot("mascotAnswerB", MASCOTS.lavender, "focus");
         document.getElementById("answerButtons").style.display = "none";
-        document.querySelector(".answer-subtext").style.display = "none";
+        document.getElementById("answerSubtext").style.display = "none";
         document.getElementById("answerResultIcon").textContent = "🤍";
         document.getElementById("answerResultText").textContent =
           CONFIG.responses.no;
@@ -2082,23 +2103,15 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         showClosingNote();
       });
 
-      /* ── SECRET VIEWER ── */
-      const SECRET_PIN = "0612"; // ganti PIN ini — tanggal lahir kamu atau angka spesial
+      /* Secret viewer */
+      const SECRET_PIN = "0612";
       let pinInput = "";
 
-      // Build numpad
       const pinPad = document.getElementById("pinPad");
       [1, 2, 3, 4, 5, 6, 7, 8, 9, "✕", 0, "⌫"].forEach((n) => {
         const btn = document.createElement("button");
         btn.textContent = n;
-        btn.style.cssText = `
-    font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px;
-    padding:14px;border-radius:16px;border:none;
-    background:var(--white);color:var(--cocoa);
-    box-shadow:0 4px 12px var(--shadow);cursor:pointer;
-    touch-action:manipulation;transition:transform 0.15s ease;
-    min-height:52px;
-  `;
+        btn.style.cssText = `font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px;padding:14px;border-radius:16px;border:none;background:var(--white);color:var(--cocoa);box-shadow:0 4px 12px var(--shadow);cursor:pointer;touch-action:manipulation;transition:transform 0.15s ease;min-height:52px;`;
         btn.addEventListener("click", () => handlePin(String(n)));
         btn.addEventListener(
           "touchstart",
@@ -2156,20 +2169,12 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
       function showSecretResult() {
         document.getElementById("secretLock").style.display = "none";
         document.getElementById("secretResult").style.display = "block";
-
         const data = loadResult();
         const el = document.getElementById("resultDisplay");
-
         if (!data) {
-          el.innerHTML = `
-      <div style="text-align:center;padding:20px 0;">
-        <div style="font-size:38px;margin-bottom:12px;">⏳</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:var(--cocoa);">Belum ada jawaban</div>
-        <div style="font-size:13px;color:var(--cocoa-soft);font-weight:600;margin-top:6px;">dia belum sampai di bagian akhir</div>
-      </div>`;
+          el.innerHTML = `<div style="text-align:center;padding:20px 0;"><div style="font-size:38px;margin-bottom:12px;">⏳</div><div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:var(--cocoa);">Belum ada jawaban</div><div style="font-size:13px;color:var(--cocoa-soft);font-weight:600;margin-top:6px;">dia belum sampai di bagian akhir</div></div>`;
           return;
         }
-
         const isYes = data.answer === "yes";
         const time = new Date(data.timestamp).toLocaleString("id-ID", {
           day: "numeric",
@@ -2178,43 +2183,19 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
           hour: "2-digit",
           minute: "2-digit",
         });
-
         el.innerHTML = `
-    <div style="
-      background:${isYes ? "linear-gradient(135deg,#fff0f6,#fce4ff)" : "linear-gradient(135deg,#f0f4ff,#e8f0ff)"};
-      border-radius:18px; padding:22px 18px; text-align:center; margin-bottom:16px;
-    ">
-      <div style="font-size:44px;margin-bottom:10px;">${isYes ? "🎉" : "🤍"}</div>
-      <div style="
-        font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;
-        color:${isYes ? "var(--bubblegum-deep)" : "var(--lavender-deep)"};
-        margin-bottom:6px;
-      ">${isYes ? "DIA MENERIMAMU!" : "Butuh Waktu Dulu"}</div>
-      <div style="font-size:12px;color:var(--cocoa-soft);font-weight:600;">${time}</div>
-    </div>
-
-    ${
-      data.message
-        ? `
-    <div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:10px;box-shadow:0 6px 18px var(--shadow);">
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cocoa-soft);margin-bottom:10px;">
-        ${isYes ? "💬 Pesannya untukmu" : "💬 Pesannya"}
-      </div>
-      <div style="
-        font-family:'Quicksand',sans-serif;font-size:15px;
-        line-height:1.8;color:var(--cocoa);font-weight:600;
-        font-style:italic;
-      ">"${data.message}"</div>
-    </div>`
-        : `
-    <div style="text-align:center;font-size:13px;color:var(--cocoa-soft);font-weight:600;padding:8px 0;">
-      ${isYes ? "dia memilih untuk tidak nulis pesan, tapi jawabannya sudah cukup bilang semuanya 🌸" : "dia belum meninggalkan pesan apapun"}
-    </div>`
-    }
-  `;
+          <div style="background:${isYes ? "linear-gradient(135deg,#fff0f6,#fce4ff)" : "linear-gradient(135deg,#f0f4ff,#e8f0ff)"};border-radius:18px;padding:22px 18px;text-align:center;margin-bottom:16px;">
+            <div style="font-size:44px;margin-bottom:10px;">${isYes ? "🎉" : "🤍"}</div>
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:${isYes ? "var(--bubblegum-deep)" : "var(--lavender-deep)"};margin-bottom:6px;">${isYes ? "DIA MENERIMAMU!" : "Butuh Waktu Dulu"}</div>
+            <div style="font-size:12px;color:var(--cocoa-soft);font-weight:600;">${time}</div>
+          </div>
+          ${
+            data.message
+              ? `<div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:10px;box-shadow:0 6px 18px var(--shadow);"><div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cocoa-soft);margin-bottom:10px;">${isYes ? "💬 Pesannya untukmu" : "💬 Pesannya"}</div><div style="font-family:'Quicksand',sans-serif;font-size:15px;line-height:1.8;color:var(--cocoa);font-weight:600;font-style:italic;">"${data.message}"</div></div>`
+              : `<div style="text-align:center;font-size:13px;color:var(--cocoa-soft);font-weight:600;padding:8px 0;">${isYes ? "dia memilih untuk tidak nulis pesan, tapi jawabannya sudah cukup bilang semuanya 🌸" : "dia belum meninggalkan pesan apapun"}</div>`
+          }`;
       }
 
-      // Secret button: show/hide overlay
       const secretBtn = document.getElementById("secretBtn");
       const secretOverlay = document.getElementById("secretOverlay");
       const secretCard = document.getElementById("secretCard");
@@ -2229,7 +2210,6 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         secretOverlay.style.pointerEvents = "auto";
         secretCard.style.transform = "translateY(0)";
       });
-
       secretOverlay.addEventListener("click", (e) => {
         if (e.target === secretOverlay) {
           secretOverlay.style.opacity = "0";
@@ -2237,7 +2217,6 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         }
       });
 
-      // Swipe down to close secret card
       let secTouchY = 0;
       secretCard.addEventListener(
         "touchstart",
@@ -2257,12 +2236,6 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         { passive: true },
       );
 
-      // Add pin-dot style
-      const dotStyle = document.createElement("style");
-      dotStyle.textContent = `.pin-dot{width:14px;height:14px;border-radius:50%;background:var(--cream-deep);transition:background 0.2s ease,transform 0.15s ease;}`;
-      document.head.appendChild(dotStyle);
-
-      // Hover effect on secret button
       secretBtn.addEventListener("mouseenter", () => {
         secretBtn.style.opacity = "0.9";
       });
@@ -2270,297 +2243,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         secretBtn.style.opacity = "0.45";
       });
 
-      /* ============================================================
-   LOFI MUSIC ENGINE — Web Audio API
-   Vibe: cozy romantic lofi, soft piano chords + gentle beat
-   ============================================================ */
-      let audioCtx = null;
-      let musicPlaying = false;
-      let scheduledNodes = [];
-      let lofiInterval = null;
-
-      function startLofiMusic() {
-        if (musicPlaying) return;
-        musicPlaying = true;
-
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        // Master gain (soft volume)
-        const master = audioCtx.createGain();
-        master.gain.setValueAtTime(0, audioCtx.currentTime);
-        master.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 2.5);
-        master.connect(audioCtx.destination);
-
-        // Reverb (convolver with synthetic impulse)
-        const convolver = audioCtx.createConvolver();
-        convolver.buffer = makeReverb(audioCtx, 2.2, 3000);
-        convolver.connect(master);
-
-        // Reverb mix gain
-        const reverbGain = audioCtx.createGain();
-        reverbGain.gain.value = 0.38;
-        reverbGain.connect(master);
-
-        // Dry signal gain
-        const dryGain = audioCtx.createGain();
-        dryGain.gain.value = 0.62;
-        dryGain.connect(master);
-
-        // Low-pass filter (lofi warmth)
-        const lpf = audioCtx.createBiquadFilter();
-        lpf.type = "lowpass";
-        lpf.frequency.value = 3800;
-        lpf.Q.value = 0.7;
-        lpf.connect(dryGain);
-        lpf.connect(reverbGain);
-
-        // Vinyl noise
-        makeVinylNoise(audioCtx, master);
-
-        // Chord progression: Cmaj7 → Am7 → Fmaj7 → G7 (lofi classic)
-        // Frequencies in Hz for each chord (root + 3rd + 5th + 7th, spread over octaves)
-        const chords = [
-          // Cmaj7
-          [130.81, 164.81, 196.0, 246.94, 329.63],
-          // Am7
-          [110.0, 146.83, 174.61, 220.0, 261.63],
-          // Fmaj7
-          [87.31, 130.81, 164.81, 196.0, 261.63],
-          // G7
-          [98.0, 146.83, 174.61, 196.0, 246.94],
-        ];
-
-        const BPM = 72;
-        const beat = 60 / BPM; // seconds per beat
-        const bar = beat * 4; // 1 bar = 4 beats
-        const chordDur = bar * 2; // each chord lasts 2 bars
-
-        let startTime = audioCtx.currentTime + 0.1;
-        let chordIndex = 0;
-
-        function scheduleBlock() {
-          const chord = chords[chordIndex % chords.length];
-
-          // Piano chord stabs (soft, spread attack)
-          chord.forEach((freq, i) => {
-            const t = startTime + i * 0.04; // stagger notes slightly (arpeggio hint)
-            schedulePianoNote(
-              audioCtx,
-              lpf,
-              freq,
-              t,
-              chordDur * 0.85,
-              0.13 - i * 0.01,
-            );
-          });
-
-          // Melody note on top (simple, one note per chord)
-          const melodyNotes = [523.25, 493.88, 523.25, 587.33]; // C5, B4, C5, D5
-          schedulePianoNote(
-            audioCtx,
-            lpf,
-            melodyNotes[chordIndex % 4],
-            startTime + beat * 0.5,
-            beat * 1.6,
-            0.18,
-          );
-          // Melody answer phrase
-          schedulePianoNote(
-            audioCtx,
-            lpf,
-            melodyNotes[(chordIndex + 1) % 4],
-            startTime + beat * 2.5,
-            beat * 1.2,
-            0.14,
-          );
-
-          // Bass note (root, one octave below chord root)
-          scheduleBassNote(
-            audioCtx,
-            lpf,
-            chord[0] * 0.5,
-            startTime,
-            chordDur * 0.9,
-            0.22,
-          );
-
-          // Lofi beat (kick + snare + hihat)
-          scheduleLofiDrum(audioCtx, master, startTime, chordDur, BPM);
-
-          startTime += chordDur;
-          chordIndex++;
-        }
-
-        // Schedule first few blocks immediately, then keep going
-        for (let i = 0; i < 3; i++) scheduleBlock();
-
-        lofiInterval = setInterval(
-          () => {
-            if (!musicPlaying) {
-              clearInterval(lofiInterval);
-              return;
-            }
-            scheduleBlock();
-          },
-          chordDur * 1000 * 0.85,
-        ); // slightly early to avoid gaps
-      }
-
-      function schedulePianoNote(ctx, dest, freq, startTime, dur, vol) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = "triangle";
-        osc.frequency.value = freq;
-
-        // Slight detune for warmth
-        osc.detune.value = (Math.random() - 0.5) * 8;
-
-        gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(vol, startTime + 0.02);
-        gain.gain.setValueAtTime(vol * 0.6, startTime + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
-
-        osc.connect(gain);
-        gain.connect(dest);
-        osc.start(startTime);
-        osc.stop(startTime + dur + 0.05);
-      }
-
-      function scheduleBassNote(ctx, dest, freq, startTime, dur, vol) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = "sine";
-        osc.frequency.value = freq;
-
-        gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(vol, startTime + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
-
-        osc.connect(gain);
-        gain.connect(dest);
-        osc.start(startTime);
-        osc.stop(startTime + dur + 0.05);
-      }
-
-      function scheduleLofiDrum(ctx, dest, startTime, barDur, bpm) {
-        const beat = 60 / bpm;
-
-        // Kick: beats 1 and 3
-        [0, beat * 2].forEach((t) => scheduleKick(ctx, dest, startTime + t));
-
-        // Snare: beats 2 and 4
-        [beat, beat * 3].forEach((t) =>
-          scheduleSnare(ctx, dest, startTime + t),
-        );
-
-        // Hihat: every half-beat, slightly humanised
-        for (let i = 0; i < 8; i++) {
-          const t = startTime + i * beat * 0.5 + (Math.random() - 0.5) * 0.018;
-          const vol = i % 2 === 0 ? 0.12 : 0.07;
-          scheduleHihat(ctx, dest, t, vol);
-        }
-      }
-
-      function scheduleKick(ctx, dest, t) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(140, t);
-        osc.frequency.exponentialRampToValueAtTime(40, t + 0.12);
-        gain.gain.setValueAtTime(0.5, t);
-        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
-        osc.connect(gain);
-        gain.connect(dest);
-        osc.start(t);
-        osc.stop(t + 0.3);
-      }
-
-      function scheduleSnare(ctx, dest, t) {
-        const noise = ctx.createBufferSource();
-        const buf = ctx.createBuffer(1, ctx.sampleRate * 0.18, ctx.sampleRate);
-        const data = buf.getChannelData(0);
-        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
-        noise.buffer = buf;
-
-        const snareFilter = ctx.createBiquadFilter();
-        snareFilter.type = "bandpass";
-        snareFilter.frequency.value = 1800;
-        snareFilter.Q.value = 0.6;
-
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.18, t);
-        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
-
-        noise.connect(snareFilter);
-        snareFilter.connect(gain);
-        gain.connect(dest);
-        noise.start(t);
-        noise.stop(t + 0.2);
-      }
-
-      function scheduleHihat(ctx, dest, t, vol) {
-        const noise = ctx.createBufferSource();
-        const buf = ctx.createBuffer(1, ctx.sampleRate * 0.06, ctx.sampleRate);
-        const data = buf.getChannelData(0);
-        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
-        noise.buffer = buf;
-
-        const hpf = ctx.createBiquadFilter();
-        hpf.type = "highpass";
-        hpf.frequency.value = 8000;
-
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(vol, t);
-        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
-
-        noise.connect(hpf);
-        hpf.connect(gain);
-        gain.connect(dest);
-        noise.start(t);
-        noise.stop(t + 0.07);
-      }
-
-      function makeVinylNoise(ctx, dest) {
-        const bufferSize = ctx.sampleRate * 4;
-        const buf = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buf.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
-
-        const src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.loop = true;
-
-        const lpf = ctx.createBiquadFilter();
-        lpf.type = "lowpass";
-        lpf.frequency.value = 800;
-
-        const gain = ctx.createGain();
-        gain.gain.value = 0.018;
-
-        src.connect(lpf);
-        lpf.connect(gain);
-        gain.connect(dest);
-        src.start();
-      }
-
-      function makeReverb(ctx, duration, decay) {
-        const sampleRate = ctx.sampleRate;
-        const length = sampleRate * duration;
-        const impulse = ctx.createBuffer(2, length, sampleRate);
-        for (let c = 0; c < 2; c++) {
-          const ch = impulse.getChannelData(c);
-          for (let i = 0; i < length; i++) {
-            ch[i] =
-              (Math.random() * 2 - 1) *
-              Math.pow(1 - i / length, decay / duration);
-          }
-        }
-        return impulse;
-      }
-
-      /* ======================================================================= */
+      /* closing note */
       const closingMessages = [
         "Nggak apa-apa, aku ngerti sepenuhnya.\nKamu nggak perlu terburu-buru buat ngerasa yakin sama siapapun, termasuk sama aku.",
         "Waktu adalah hal yang wajar untuk diminta.\nAku tetap di sini, dengan cara yang sama, tanpa buru-buru dan tanpa berubah.",
@@ -2587,17 +2270,7 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
         for (let i = 0; i < 18; i++) {
           const s = document.createElement("span");
           s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-          s.style.cssText = `
-      position:absolute;
-      left:${Math.random() * 100}%;
-      top:${Math.random() * 100}%;
-      font-size:${8 + Math.random() * 10}px;
-      color: var(--lavender-deep);
-      opacity:${0.2 + Math.random() * 0.5};
-      animation: star-twinkle ${1.5 + Math.random() * 2}s ease-in-out infinite;
-      animation-delay:${Math.random() * 2}s;
-      pointer-events:none;
-    `;
+          s.style.cssText = `position:absolute;left:${Math.random() * 100}%;top:${Math.random() * 100}%;font-size:${8 + Math.random() * 10}px;color:var(--lavender-deep);opacity:${0.2 + Math.random() * 0.5};animation:star-twinkle ${1.5 + Math.random() * 2}s ease-in-out infinite;animation-delay:${Math.random() * 2}s;pointer-events:none;`;
           container.appendChild(s);
         }
       }
@@ -2611,18 +2284,242 @@ dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kam
       }
 
       document.getElementById("btnWish").addEventListener("click", () => {
-        const btn = document.getElementById("btnWish");
-        btn.style.display = "none";
+        document.getElementById("btnWish").style.display = "none";
         const done = document.getElementById("wishDone");
         done.classList.add("show");
         done.textContent = "";
-
         spawnConfetti();
-
-        const wishText =
-          "udah disimpen. makasih udah mau buka halaman ini sampai akhir 🌸";
-        typeText(done, wishText, 35);
+        typeText(
+          done,
+          "udah disimpen. makasih udah mau buka halaman ini sampai akhir 🌸",
+          35,
+        );
       });
+
+      /* ========== LOFI MUSIC ENGINE ========== */
+      let audioCtx = null,
+        musicPlaying = false,
+        lofiInterval = null;
+
+      function startLofiMusic() {
+        if (musicPlaying) return;
+        musicPlaying = true;
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const master = audioCtx.createGain();
+        master.gain.setValueAtTime(0, audioCtx.currentTime);
+        master.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 2.5);
+        master.connect(audioCtx.destination);
+        const convolver = audioCtx.createConvolver();
+        convolver.buffer = makeReverb(audioCtx, 2.2, 3000);
+        convolver.connect(master);
+        const reverbGain = audioCtx.createGain();
+        reverbGain.gain.value = 0.38;
+        reverbGain.connect(master);
+        const dryGain = audioCtx.createGain();
+        dryGain.gain.value = 0.62;
+        dryGain.connect(master);
+        const lpf = audioCtx.createBiquadFilter();
+        lpf.type = "lowpass";
+        lpf.frequency.value = 3800;
+        lpf.Q.value = 0.7;
+        lpf.connect(dryGain);
+        lpf.connect(reverbGain);
+        makeVinylNoise(audioCtx, master);
+        const chords = [
+          [130.81, 164.81, 196.0, 246.94, 329.63],
+          [110.0, 146.83, 174.61, 220.0, 261.63],
+          [87.31, 130.81, 164.81, 196.0, 261.63],
+          [98.0, 146.83, 174.61, 196.0, 246.94],
+        ];
+        const BPM = 72,
+          beat = 60 / BPM,
+          bar = beat * 4,
+          chordDur = bar * 2;
+        let startTime = audioCtx.currentTime + 0.1,
+          chordIndex = 0;
+
+        function scheduleBlock() {
+          const chord = chords[chordIndex % chords.length];
+          chord.forEach((freq, i) =>
+            schedulePianoNote(
+              audioCtx,
+              lpf,
+              freq,
+              startTime + i * 0.04,
+              chordDur * 0.85,
+              0.13 - i * 0.01,
+            ),
+          );
+          const melodyNotes = [523.25, 493.88, 523.25, 587.33];
+          schedulePianoNote(
+            audioCtx,
+            lpf,
+            melodyNotes[chordIndex % 4],
+            startTime + beat * 0.5,
+            beat * 1.6,
+            0.18,
+          );
+          schedulePianoNote(
+            audioCtx,
+            lpf,
+            melodyNotes[(chordIndex + 1) % 4],
+            startTime + beat * 2.5,
+            beat * 1.2,
+            0.14,
+          );
+          scheduleBassNote(
+            audioCtx,
+            lpf,
+            chord[0] * 0.5,
+            startTime,
+            chordDur * 0.9,
+            0.22,
+          );
+          scheduleLofiDrum(audioCtx, master, startTime, chordDur, BPM);
+          startTime += chordDur;
+          chordIndex++;
+        }
+
+        for (let i = 0; i < 3; i++) scheduleBlock();
+        lofiInterval = setInterval(
+          () => {
+            if (!musicPlaying) {
+              clearInterval(lofiInterval);
+              return;
+            }
+            scheduleBlock();
+          },
+          chordDur * 1000 * 0.85,
+        );
+      }
+
+      function schedulePianoNote(ctx, dest, freq, startTime, dur, vol) {
+        const osc = ctx.createOscillator(),
+          gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.value = freq;
+        osc.detune.value = (Math.random() - 0.5) * 8;
+        gain.gain.setValueAtTime(0, startTime);
+        gain.gain.linearRampToValueAtTime(vol, startTime + 0.02);
+        gain.gain.setValueAtTime(vol * 0.6, startTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(startTime);
+        osc.stop(startTime + dur + 0.05);
+      }
+
+      function scheduleBassNote(ctx, dest, freq, startTime, dur, vol) {
+        const osc = ctx.createOscillator(),
+          gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, startTime);
+        gain.gain.linearRampToValueAtTime(vol, startTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(startTime);
+        osc.stop(startTime + dur + 0.05);
+      }
+
+      function scheduleLofiDrum(ctx, dest, startTime, barDur, bpm) {
+        const beat = 60 / bpm;
+        [0, beat * 2].forEach((t) => scheduleKick(ctx, dest, startTime + t));
+        [beat, beat * 3].forEach((t) =>
+          scheduleSnare(ctx, dest, startTime + t),
+        );
+        for (let i = 0; i < 8; i++) {
+          const t = startTime + i * beat * 0.5 + (Math.random() - 0.5) * 0.018;
+          scheduleHihat(ctx, dest, t, i % 2 === 0 ? 0.12 : 0.07);
+        }
+      }
+
+      function scheduleKick(ctx, dest, t) {
+        const osc = ctx.createOscillator(),
+          gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(140, t);
+        osc.frequency.exponentialRampToValueAtTime(40, t + 0.12);
+        gain.gain.setValueAtTime(0.5, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(t);
+        osc.stop(t + 0.3);
+      }
+
+      function scheduleSnare(ctx, dest, t) {
+        const noise = ctx.createBufferSource(),
+          buf = ctx.createBuffer(1, ctx.sampleRate * 0.18, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+        noise.buffer = buf;
+        const snareFilter = ctx.createBiquadFilter();
+        snareFilter.type = "bandpass";
+        snareFilter.frequency.value = 1800;
+        snareFilter.Q.value = 0.6;
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.18, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+        noise.connect(snareFilter);
+        snareFilter.connect(gain);
+        gain.connect(dest);
+        noise.start(t);
+        noise.stop(t + 0.2);
+      }
+
+      function scheduleHihat(ctx, dest, t, vol) {
+        const noise = ctx.createBufferSource(),
+          buf = ctx.createBuffer(1, ctx.sampleRate * 0.06, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+        noise.buffer = buf;
+        const hpf = ctx.createBiquadFilter();
+        hpf.type = "highpass";
+        hpf.frequency.value = 8000;
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(vol, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+        noise.connect(hpf);
+        hpf.connect(gain);
+        gain.connect(dest);
+        noise.start(t);
+        noise.stop(t + 0.07);
+      }
+
+      function makeVinylNoise(ctx, dest) {
+        const bufferSize = ctx.sampleRate * 4,
+          buf = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+        const lpf = ctx.createBiquadFilter();
+        lpf.type = "lowpass";
+        lpf.frequency.value = 800;
+        const gain = ctx.createGain();
+        gain.gain.value = 0.018;
+        src.connect(lpf);
+        lpf.connect(gain);
+        gain.connect(dest);
+        src.start();
+      }
+
+      function makeReverb(ctx, duration, decay) {
+        const sampleRate = ctx.sampleRate,
+          length = sampleRate * duration;
+        const impulse = ctx.createBuffer(2, length, sampleRate);
+        for (let c = 0; c < 2; c++) {
+          const ch = impulse.getChannelData(c);
+          for (let i = 0; i < length; i++)
+            ch[i] =
+              (Math.random() * 2 - 1) *
+              Math.pow(1 - i / length, decay / duration);
+        }
+        return impulse;
+      }
     </script>
   </body>
 </html>
