@@ -1,0 +1,2628 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Untuk Kamu &lt;3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #fff4e8;
+        --cream-deep: #ffe9d4;
+        --bubblegum: #ffb8d1;
+        --bubblegum-deep: #ff6fa3;
+        --lavender: #c9b8ff;
+        --lavender-deep: #a78bfa;
+        --cocoa: #6b3f4d;
+        --cocoa-soft: #95677a;
+        --gold: #ffd66b;
+        --white: #ffffff;
+        --mint: #b8f2d9;
+        --shadow: rgba(107, 63, 77, 0.16);
+        --shadow-deep: rgba(107, 63, 77, 0.28);
+
+        /* Fluid spacing scale */
+        --sp-xs: clamp(6px, 1.5vw, 10px);
+        --sp-sm: clamp(10px, 2.5vw, 16px);
+        --sp-md: clamp(16px, 4vw, 24px);
+        --sp-lg: clamp(22px, 5.5vw, 36px);
+        --sp-xl: clamp(30px, 7vw, 50px);
+
+        /* Fluid font scale */
+        --fs-xs: clamp(11px, 2.8vw, 13px);
+        --fs-sm: clamp(12px, 3.2vw, 15px);
+        --fs-md: clamp(14px, 3.8vw, 17px);
+        --fs-lg: clamp(18px, 5vw, 24px);
+        --fs-xl: clamp(28px, 8vw, 46px);
+        --fs-hero: clamp(32px, 9vw, 52px);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Quicksand", sans-serif;
+        background: var(--cream);
+        color: var(--cocoa);
+        /* Prevent elastic bounce on iOS */
+        overscroll-behavior: none;
+      }
+
+      #app {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ---- scenes ---- */
+      .scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.55s ease;
+        /* Safe area insets for notch phones */
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+      .scene.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* ---- floating petals ---- */
+      .petal-fall {
+        position: absolute;
+        top: -40px;
+        opacity: 0.7;
+        animation: fall linear infinite;
+        pointer-events: none;
+        user-select: none;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(115vh) rotate(380deg);
+        }
+      }
+
+      /* =================== SCENE 1: WELCOME =================== */
+      #scene-welcome {
+        background: radial-gradient(
+          circle at 50% 0%,
+          var(--cream-deep) 0%,
+          var(--cream) 60%
+        );
+      }
+      .welcome-card {
+        text-align: center;
+        z-index: 2;
+        padding: 0 var(--sp-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 420px;
+      }
+      .mascot-wrap {
+        margin-bottom: var(--sp-xs);
+        animation: mascot-greet 2.6s ease-in-out infinite;
+      }
+      .mascot-wrap svg {
+        width: clamp(70px, 22vw, 110px);
+        height: clamp(70px, 22vw, 110px);
+      }
+      @keyframes mascot-greet {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-6px) rotate(-3deg);
+        }
+        75% {
+          transform: translateY(-6px) rotate(3deg);
+        }
+      }
+      .greeting {
+        font-family: "Baloo 2", cursive;
+        font-weight: 800;
+        font-size: var(--fs-hero);
+        color: var(--bubblegum-deep);
+        text-shadow:
+          0 3px 0 var(--white),
+          0 6px 14px var(--shadow);
+        margin-bottom: var(--sp-xs);
+        letter-spacing: 0.5px;
+        line-height: 1.1;
+      }
+      .greeting .name-pop {
+        color: var(--lavender-deep);
+      }
+      .sub-instruction {
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        font-weight: 700;
+        margin-bottom: var(--sp-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--white);
+        padding: 8px 16px;
+        border-radius: 50px;
+        box-shadow: 0 4px 14px var(--shadow);
+        white-space: nowrap;
+      }
+      .pulse-note {
+        display: inline-block;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.25) rotate(10deg);
+        }
+      }
+      .btn-start {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-md);
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--bubblegum) 0%,
+          var(--bubblegum-deep) 100%
+        );
+        border: none;
+        border-bottom: 5px solid #e0508a;
+        padding: clamp(13px, 3.5vw, 17px) clamp(28px, 8vw, 40px);
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow:
+          0 10px 0 var(--shadow),
+          0 14px 24px var(--shadow);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        /* Large tap target */
+        min-height: 52px;
+        touch-action: manipulation;
+      }
+      .btn-start:hover {
+        transform: translateY(-3px) scale(1.04);
+      }
+      .btn-start:active {
+        transform: translateY(3px) scale(0.97);
+        border-bottom-width: 2px;
+      }
+
+      /* =================== SCENE 2: GAME =================== */
+      #scene-game {
+        background: radial-gradient(circle at 50% 0%, #e4ecff 0%, #d8e6ff 70%);
+      }
+      .game-hud {
+        position: absolute;
+        top: max(16px, env(safe-area-inset-top, 16px));
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 5;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 0 12px;
+      }
+      .hud-pill {
+        background: var(--white);
+        border-radius: 50px;
+        padding: clamp(8px, 2.5vw, 11px) clamp(14px, 4vw, 22px);
+        font-weight: 700;
+        font-size: var(--fs-xs);
+        font-family: "Baloo 2", sans-serif;
+        color: var(--cocoa);
+        box-shadow: 0 6px 16px var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .hud-progress-track {
+        width: clamp(140px, 55vw, 220px);
+        height: 8px;
+        background: var(--white);
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow: 0 3px 8px var(--shadow);
+      }
+      .hud-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(
+          90deg,
+          var(--bubblegum),
+          var(--bubblegum-deep)
+        );
+        border-radius: 50px;
+        transition: width 0.25s ease;
+      }
+      .hud-instruction {
+        font-size: clamp(10px, 2.6vw, 13px);
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        color: var(--cocoa-soft);
+        padding: 0 8px;
+      }
+
+      .game-mascots {
+        position: absolute;
+        bottom: max(18px, env(safe-area-inset-bottom, 18px));
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: clamp(28px, 8vw, 70px);
+        z-index: 4;
+        pointer-events: none;
+      }
+      .game-mascots svg {
+        filter: drop-shadow(0 6px 10px var(--shadow));
+        width: clamp(46px, 13vw, 72px);
+        height: clamp(46px, 13vw, 72px);
+      }
+      .game-area {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .floating-heart {
+        position: absolute;
+        font-size: clamp(26px, 7vw, 36px);
+        cursor: pointer;
+        user-select: none;
+        filter: drop-shadow(0 4px 8px rgba(255, 111, 163, 0.45));
+        animation: drift 3.2s ease-in-out infinite;
+        transition: transform 0.18s ease;
+        z-index: 3;
+        touch-action: none;
+        /* Better tap target on mobile */
+        padding: 6px;
+      }
+      .floating-heart:hover {
+        transform: scale(1.18);
+      }
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-16px);
+        }
+      }
+      .floating-heart.naughty {
+        animation: drift-naughty 1.8s ease-in-out infinite;
+      }
+      @keyframes drift-naughty {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(-6deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(6deg);
+        }
+      }
+      .floating-heart.fleeing {
+        transition:
+          left 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+          top 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .heart-pop {
+        position: absolute;
+        font-size: clamp(16px, 4.5vw, 22px);
+        font-weight: 700;
+        font-family: "Baloo 2", sans-serif;
+        color: var(--bubblegum-deep);
+        pointer-events: none;
+        animation: pop-up 0.75s ease-out forwards;
+        z-index: 6;
+        white-space: nowrap;
+      }
+      @keyframes pop-up {
+        0% {
+          opacity: 1;
+          transform: translateY(0) scale(0.8);
+        }
+        30% {
+          transform: translateY(-10px) scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-55px) scale(1);
+        }
+      }
+      .tease-text {
+        position: absolute;
+        font-size: clamp(11px, 3vw, 14px);
+        font-weight: 700;
+        font-family: "Baloo 2", sans-serif;
+        color: var(--lavender-deep);
+        background: var(--white);
+        padding: 4px 10px;
+        border-radius: 50px;
+        pointer-events: none;
+        z-index: 6;
+        box-shadow: 0 4px 10px var(--shadow);
+        animation: tease-pop 0.9s ease-out forwards;
+        white-space: nowrap;
+      }
+      @keyframes tease-pop {
+        0% {
+          opacity: 0;
+          transform: translateY(6px) scale(0.7);
+        }
+        25% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        75% {
+          opacity: 1;
+          transform: translateY(-4px) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-14px) scale(0.95);
+        }
+      }
+
+      /* =================== SCENE 3: LOADING =================== */
+      #scene-loading {
+        background: radial-gradient(
+          circle at 50% 40%,
+          var(--cream-deep) 0%,
+          var(--cream) 70%
+        );
+      }
+      .loading-wrap {
+        text-align: center;
+        width: clamp(240px, 80vw, 320px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 var(--sp-md);
+      }
+      .loading-mascots {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: var(--sp-md);
+      }
+      .loading-mascots svg {
+        width: clamp(56px, 18vw, 80px);
+        height: clamp(56px, 18vw, 80px);
+      }
+      .loading-track {
+        width: 100%;
+        height: 14px;
+        background: var(--white);
+        border-radius: 50px;
+        position: relative;
+        overflow: visible;
+        margin-bottom: var(--sp-sm);
+        box-shadow: inset 0 2px 6px var(--shadow);
+      }
+      .loading-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--bubblegum), var(--lavender));
+        border-radius: 50px;
+        transition: width 0.4s ease;
+        position: relative;
+      }
+      .loading-heart-icon {
+        position: absolute;
+        right: -16px;
+        top: -13px;
+        font-size: 32px;
+        filter: drop-shadow(0 2px 6px var(--shadow));
+        transition: right 0.4s ease;
+      }
+      .loading-text {
+        font-weight: 700;
+        font-family: "Baloo 2", sans-serif;
+        color: var(--cocoa-soft);
+        font-size: var(--fs-sm);
+      }
+
+      /* =================== SCENE 4: REVEAL =================== */
+      #scene-reveal {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: clamp(44px, 12vw, 60px) var(--sp-sm) clamp(30px, 8vw, 50px);
+        padding-bottom: calc(
+          clamp(30px, 8vw, 50px) + env(safe-area-inset-bottom, 0px)
+        );
+        align-items: center;
+        justify-content: flex-start;
+        background: radial-gradient(
+          circle at 50% 0%,
+          var(--cream-deep) 0%,
+          var(--cream) 60%
+        );
+      }
+      .notif-toast {
+        position: fixed;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--white);
+        border-radius: 16px;
+        padding: clamp(10px, 3vw, 14px) clamp(14px, 4vw, 22px);
+        box-shadow: 0 12px 30px var(--shadow-deep);
+        z-index: 20;
+        max-width: 90%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: top 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .notif-toast.show {
+        top: max(16px, env(safe-area-inset-top, 16px));
+      }
+      .notif-icon {
+        font-size: clamp(18px, 5vw, 24px);
+      }
+      .notif-title {
+        font-weight: 700;
+        font-family: "Baloo 2", sans-serif;
+        color: var(--bubblegum-deep);
+        font-size: var(--fs-xs);
+        margin-bottom: 1px;
+      }
+      .notif-body {
+        font-size: clamp(11px, 2.8vw, 13px);
+        color: var(--cocoa-soft);
+        font-weight: 600;
+      }
+
+      .reveal-inner {
+        width: 100%;
+        max-width: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--sp-md);
+        padding: 0 4px;
+      }
+      .polaroid {
+        background: var(--white);
+        padding: clamp(10px, 3vw, 14px) clamp(10px, 3vw, 14px)
+          clamp(36px, 10vw, 52px);
+        border-radius: 10px;
+        box-shadow: 0 18px 40px var(--shadow-deep);
+        transform: rotate(-2deg);
+        width: clamp(160px, 64vw, 260px);
+        text-align: center;
+        position: relative;
+        animation: float-card 5s ease-in-out infinite;
+      }
+      @keyframes float-card {
+        0%,
+        100% {
+          transform: rotate(-2deg) translateY(0);
+        }
+        50% {
+          transform: rotate(-1deg) translateY(-8px);
+        }
+      }
+      .polaroid-photo {
+        width: 100%;
+        aspect-ratio: 4/5;
+        border-radius: 6px;
+        background: linear-gradient(
+          135deg,
+          var(--bubblegum) 0%,
+          var(--lavender) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: clamp(32px, 10vw, 48px);
+        color: var(--white);
+        overflow: hidden;
+      }
+      .polaroid-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .polaroid-caption {
+        font-family: "Baloo 2", cursive;
+        font-size: clamp(14px, 4vw, 18px);
+        font-weight: 700;
+        color: var(--bubblegum-deep);
+        margin-top: clamp(10px, 3vw, 14px);
+      }
+      .ribbon-deco {
+        position: absolute;
+        font-size: clamp(22px, 6vw, 30px);
+        top: -12px;
+        right: 2px;
+        filter: drop-shadow(0 3px 6px var(--shadow));
+      }
+
+      .envelopes {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+      }
+      .envelope-btn {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--white);
+        border: none;
+        border-radius: 20px;
+        padding: clamp(12px, 3.5vw, 16px) clamp(16px, 5vw, 24px);
+        width: 100%;
+        max-width: 340px;
+        cursor: pointer;
+        box-shadow: 0 10px 22px var(--shadow);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          opacity 0.3s ease;
+        touch-action: manipulation;
+        min-height: 64px; /* good tap target */
+      }
+      .envelope-btn:hover:not(:disabled) {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 14px 28px var(--shadow-deep);
+      }
+      .envelope-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .envelope-icon {
+        font-size: clamp(26px, 7vw, 34px);
+        flex-shrink: 0;
+      }
+      .envelope-label {
+        font-weight: 700;
+        font-family: "Baloo 2", sans-serif;
+        font-size: var(--fs-sm);
+        color: var(--cocoa);
+        text-align: left;
+      }
+      .envelope-sub {
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        font-weight: 600;
+      }
+
+      .btn-continue {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-sm);
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--lavender) 0%,
+          var(--lavender-deep) 100%
+        );
+        border: none;
+        border-bottom: 4px solid #8a6fd9;
+        padding: clamp(12px, 3.5vw, 14px) clamp(24px, 7vw, 30px);
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 6px 16px var(--shadow);
+        margin-top: 4px;
+        transition: transform 0.2s ease;
+        min-height: 52px;
+        touch-action: manipulation;
+      }
+      .btn-continue:hover {
+        transform: translateY(-2px);
+      }
+      .btn-continue:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* ---- letter modal ---- */
+      .letter-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(107, 63, 77, 0.4);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 30;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        padding: 0;
+      }
+      /* On larger screens, center the modal */
+      @media (min-height: 640px) and (min-width: 480px) {
+        .letter-overlay {
+          align-items: center;
+          padding: 20px;
+        }
+        .letter-card {
+          border-radius: 22px !important;
+          max-height: 78vh !important;
+        }
+      }
+      .letter-overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .letter-card {
+        background: var(--cream);
+        border-radius: 22px 22px 0 0;
+        padding: clamp(20px, 6vw, 30px) clamp(16px, 5vw, 24px);
+        padding-bottom: calc(
+          clamp(20px, 6vw, 30px) + env(safe-area-inset-bottom, 0px)
+        );
+        width: 100%;
+        max-width: 520px;
+        max-height: 82vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.22);
+        position: relative;
+        transform: translateY(40px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .letter-overlay.show .letter-card {
+        transform: translateY(0);
+      }
+      /* drag handle hint */
+      .letter-card::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 4px;
+        background: var(--cocoa-soft);
+        opacity: 0.3;
+        border-radius: 50px;
+        margin: 0 auto 18px;
+      }
+      .letter-heading {
+        font-family: "Baloo 2", cursive;
+        font-size: var(--fs-lg);
+        font-weight: 700;
+        color: var(--bubblegum-deep);
+        margin-bottom: 14px;
+        text-align: center;
+      }
+      .letter-body {
+        font-size: clamp(13px, 3.5vw, 15px);
+        line-height: 1.85;
+        color: var(--cocoa);
+        font-weight: 500;
+        white-space: pre-wrap;
+      }
+      .letter-close {
+        margin-top: var(--sp-md);
+        width: 100%;
+        padding: clamp(12px, 3.5vw, 14px);
+        border-radius: 50px;
+        border: none;
+        border-bottom: 4px solid #e0508a;
+        background: linear-gradient(
+          135deg,
+          var(--bubblegum),
+          var(--bubblegum-deep)
+        );
+        color: var(--white);
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-sm);
+        cursor: pointer;
+        box-shadow: 0 8px 18px var(--shadow);
+        min-height: 52px;
+        touch-action: manipulation;
+      }
+
+      /* =================== SCENE 5: ANSWER =================== */
+      #scene-answer {
+        background: radial-gradient(
+          circle at 50% 20%,
+          var(--cream-deep) 0%,
+          var(--cream) 65%
+        );
+        padding: var(--sp-md);
+        padding-bottom: max(var(--sp-md), env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .answer-card {
+        text-align: center;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 380px;
+        width: 100%;
+        padding-top: clamp(20px, 6vw, 40px);
+        padding-bottom: 20px;
+      }
+      .answer-eyebrow {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-xs);
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--bubblegum-deep);
+        background: var(--white);
+        padding: clamp(5px, 1.5vw, 7px) clamp(12px, 3.5vw, 16px);
+        border-radius: 50px;
+        box-shadow: 0 4px 12px var(--shadow);
+        margin-bottom: var(--sp-sm);
+      }
+      .answer-mascot-pair {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--sp-xs);
+        height: clamp(80px, 24vw, 120px);
+      }
+      .answer-mascot-pair svg {
+        filter: drop-shadow(0 6px 12px var(--shadow));
+        width: clamp(72px, 22vw, 100px);
+        height: clamp(72px, 22vw, 100px);
+      }
+      #mascotAnswerA {
+        position: relative;
+        right: -8px;
+        z-index: 2;
+        animation: lean-in 2.4s ease-in-out infinite;
+      }
+      #mascotAnswerB {
+        position: relative;
+        left: -8px;
+        z-index: 1;
+        animation: lean-in-b 2.4s ease-in-out infinite;
+      }
+      @keyframes lean-in {
+        0%,
+        100% {
+          transform: rotate(0deg) translateY(0);
+        }
+        50% {
+          transform: rotate(-4deg) translateY(-5px);
+        }
+      }
+      @keyframes lean-in-b {
+        0%,
+        100% {
+          transform: rotate(0deg) translateY(0);
+        }
+        50% {
+          transform: rotate(4deg) translateY(-5px);
+        }
+      }
+      .answer-heartbeat {
+        position: absolute;
+        top: -6px;
+        font-size: clamp(16px, 4.5vw, 22px);
+        animation: heartbeat-pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes heartbeat-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.85;
+        }
+        50% {
+          transform: scale(1.3);
+          opacity: 1;
+        }
+      }
+      .answer-question {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-lg);
+        color: var(--cocoa);
+        margin: var(--sp-xs) 0 var(--sp-xs);
+        line-height: 1.35;
+      }
+      .answer-subtext {
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        font-weight: 600;
+        margin-bottom: var(--sp-md);
+        line-height: 1.6;
+        padding: 0 4px;
+      }
+      .answer-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(10px, 3vw, 14px);
+        width: 100%;
+        max-width: 320px;
+      }
+      .btn-yes,
+      .btn-no {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-md);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        width: 100%;
+        min-height: 56px;
+        padding: clamp(12px, 3.5vw, 16px) clamp(20px, 6vw, 28px);
+        touch-action: manipulation;
+      }
+      .btn-yes {
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--bubblegum),
+          var(--bubblegum-deep)
+        );
+        border-bottom: 5px solid #e0508a;
+        box-shadow: 0 8px 20px var(--shadow);
+      }
+      .btn-no {
+        color: var(--cocoa-soft);
+        background: var(--white);
+        border-bottom: 5px solid #e8d9de;
+        box-shadow: 0 8px 20px var(--shadow);
+      }
+      .btn-yes:hover,
+      .btn-no:hover {
+        transform: translateY(-3px) scale(1.03);
+      }
+      .btn-yes:active,
+      .btn-no:active {
+        transform: translateY(1px) scale(0.98);
+      }
+
+      .answer-result-card {
+        margin-top: var(--sp-sm);
+        background: var(--white);
+        border-radius: 24px;
+        padding: clamp(20px, 6vw, 28px) clamp(16px, 5vw, 24px);
+        box-shadow: 0 16px 36px var(--shadow-deep);
+        max-width: 340px;
+        width: 100%;
+        display: none;
+      }
+      .answer-result-card.show {
+        display: block;
+        animation: result-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      @keyframes result-pop {
+        0% {
+          transform: scale(0.6) translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+      .answer-result-icon {
+        font-size: clamp(28px, 8vw, 38px);
+        margin-bottom: 10px;
+        display: block;
+      }
+      .answer-result-text {
+        font-family: "Baloo 2", sans-serif;
+        font-size: var(--fs-md);
+        color: var(--bubblegum-deep);
+        font-weight: 700;
+        line-height: 1.5;
+      }
+      .answer-result-sub {
+        margin-top: 8px;
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        font-weight: 600;
+      }
+
+      .reply-box {
+        margin-top: var(--sp-sm);
+        text-align: left;
+        display: none;
+      }
+      .reply-box.show {
+        display: block;
+        animation: result-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .reply-label {
+        font-family: "Baloo 2", sans-serif;
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        color: var(--cocoa);
+        margin-bottom: 8px;
+      }
+      .reply-textarea {
+        width: 100%;
+        min-height: 90px;
+        border: 2px solid var(--bubblegum);
+        border-radius: 16px;
+        padding: 12px 14px;
+        font-family: "Quicksand", sans-serif;
+        font-size: clamp(13px, 3.5vw, 14px);
+        color: var(--cocoa);
+        background: var(--cream);
+        resize: vertical;
+        outline: none;
+        transition: border-color 0.2s ease;
+        /* prevent iOS zoom on focus (font-size >= 16px) */
+        font-size: 16px;
+      }
+      .reply-textarea:focus {
+        border-color: var(--bubblegum-deep);
+      }
+      .reply-textarea::placeholder {
+        color: var(--cocoa-soft);
+        opacity: 0.6;
+      }
+      .btn-send-reply {
+        margin-top: 12px;
+        width: 100%;
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: var(--fs-sm);
+        color: var(--white);
+        background: linear-gradient(135deg, #5fd99a, #34b87a);
+        border: none;
+        border-bottom: 4px solid #279c66;
+        padding: clamp(11px, 3vw, 13px) 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 8px 18px var(--shadow);
+        transition: transform 0.2s ease;
+        min-height: 52px;
+        touch-action: manipulation;
+      }
+      .btn-send-reply:hover {
+        transform: translateY(-2px);
+      }
+      .btn-send-reply:active {
+        transform: translateY(1px);
+      }
+      .reply-sent-note {
+        margin-top: 10px;
+        font-size: var(--fs-xs);
+        color: var(--cocoa-soft);
+        font-weight: 600;
+        text-align: center;
+        display: none;
+      }
+      .reply-sent-note.show {
+        display: block;
+      }
+
+      /* ---- confetti ---- */
+      .confetti-piece {
+        position: fixed;
+        top: -30px;
+        z-index: 40;
+        pointer-events: none;
+        animation: confetti-fall linear forwards;
+      }
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(110vh) rotate(540deg);
+          opacity: 0.3;
+        }
+      }
+
+      /* ---- closing note ---- */
+      .closing-note {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(160deg, #f5eeff 0%, var(--cream) 100%);
+        border-radius: 22px;
+        padding: clamp(20px, 6vw, 28px) clamp(16px, 5vw, 24px);
+        text-align: center;
+        margin-top: 4px;
+      }
+      .closing-stars {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      @keyframes star-twinkle {
+        0%,
+        100% {
+          opacity: 0.15;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.3);
+        }
+      }
+      .closing-icon {
+        font-size: clamp(28px, 8vw, 38px);
+        margin-bottom: 12px;
+        display: block;
+        animation: moon-sway 4s ease-in-out infinite;
+      }
+      @keyframes moon-sway {
+        0%,
+        100% {
+          transform: rotate(-8deg) translateY(0);
+        }
+        50% {
+          transform: rotate(8deg) translateY(-6px);
+        }
+      }
+      .closing-text {
+        font-family: "Quicksand", sans-serif;
+        font-size: clamp(13px, 3.5vw, 15px);
+        font-weight: 600;
+        color: var(--cocoa);
+        line-height: 1.8;
+        min-height: 60px;
+        white-space: pre-line;
+        position: relative;
+        z-index: 1;
+      }
+      .closing-sig {
+        font-family: "Baloo 2", cursive;
+        font-size: clamp(12px, 3vw, 14px);
+        font-weight: 700;
+        color: var(--lavender-deep);
+        margin-top: 14px;
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
+      }
+      .btn-wish {
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: clamp(13px, 3.5vw, 15px);
+        color: var(--white);
+        background: linear-gradient(
+          135deg,
+          var(--lavender),
+          var(--lavender-deep)
+        );
+        border: none;
+        border-bottom: 4px solid #7c5fd9;
+        padding: clamp(11px, 3vw, 13px) clamp(20px, 6vw, 26px);
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 6px 16px var(--shadow);
+        transition: transform 0.2s ease;
+        min-height: 48px;
+        touch-action: manipulation;
+        position: relative;
+        z-index: 1;
+      }
+      .btn-wish:hover {
+        transform: translateY(-2px) scale(1.04);
+      }
+      .btn-wish:active {
+        transform: translateY(1px) scale(0.97);
+      }
+      .wish-done {
+        display: none;
+        font-family: "Baloo 2", sans-serif;
+        font-weight: 700;
+        font-size: clamp(13px, 3.5vw, 14px);
+        color: var(--bubblegum-deep);
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+        min-height: 40px;
+      }
+      .wish-done.show {
+        display: block;
+        animation: result-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      /* ---- reduced motion ---- */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+
+      /* ---- very small screens (< 360px) ---- */
+      @media (max-width: 359px) {
+        .greeting {
+          font-size: 26px;
+        }
+        .hud-pill {
+          font-size: 10px;
+          padding: 7px 12px;
+        }
+        .btn-yes,
+        .btn-no {
+          font-size: 14px;
+        }
+        .polaroid {
+          width: 140px;
+        }
+      }
+
+      /* ---- landscape on mobile ---- */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .welcome-card {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+          padding: 8px 16px;
+        }
+        .mascot-wrap {
+          margin-bottom: 0;
+        }
+        .mascot-wrap svg {
+          width: 60px;
+          height: 60px;
+        }
+        .greeting {
+          font-size: 28px;
+          width: 100%;
+        }
+        .sub-instruction {
+          margin-bottom: 10px;
+        }
+        .game-mascots {
+          display: none;
+        }
+        .answer-card {
+          padding-top: 8px;
+        }
+        .answer-mascot-pair {
+          height: 60px;
+        }
+        .answer-mascot-pair svg {
+          width: 52px;
+          height: 52px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- ============ SCENE 1: WELCOME ============ -->
+      <div class="scene active" id="scene-welcome">
+        <div class="welcome-card">
+          <div class="mascot-wrap">
+            <svg viewBox="0 0 100 100" id="mascotWelcome"></svg>
+          </div>
+          <div class="greeting">
+            Hai, <span class="name-pop" id="nameDisplay">Kamu</span>!
+          </div>
+          <div class="sub-instruction">
+            <span class="pulse-note">🎵</span> Nyalain musiknya dulu, yuk!
+          </div>
+          <button class="btn-start" id="startBtn">Mulai Yuk! 🐾</button>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 2: GAME ============ -->
+      <div class="scene" id="scene-game">
+        <div class="game-hud">
+          <div class="hud-pill">
+            🐱💕 <span id="heartCount">0</span> /
+            <span id="heartTarget">14</span> hati ditangkep!
+          </div>
+          <div class="hud-progress-track">
+            <div class="hud-progress-fill" id="gameProgressFill"></div>
+          </div>
+          <div class="hud-instruction">
+            KETUK HATINYA! AWAS, ADA YANG SUKA KABUR 😼
+          </div>
+        </div>
+        <div class="game-area" id="gameArea"></div>
+        <div class="game-mascots">
+          <svg viewBox="0 0 100 100" id="mascotGameA"></svg>
+          <svg viewBox="0 0 100 100" id="mascotGameB"></svg>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 3: LOADING ============ -->
+      <div class="scene" id="scene-loading">
+        <div class="loading-wrap">
+          <div class="loading-mascots">
+            <svg viewBox="0 0 100 100" id="mascotLoading"></svg>
+          </div>
+          <div class="loading-track">
+            <div class="loading-fill" id="loadingFill">
+              <span class="loading-heart-icon">💗</span>
+            </div>
+          </div>
+          <div class="loading-text" id="loadingText">
+            Lagi nyusun kata-kata...
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 4: REVEAL ============ -->
+      <div class="scene" id="scene-reveal">
+        <div class="notif-toast" id="notifToast">
+          <span class="notif-icon">🔔</span>
+          <div>
+            <div class="notif-title">Notifikasi baru!</div>
+            <div class="notif-body">semoga kamu suka ya &lt;3</div>
+          </div>
+        </div>
+
+        <div class="reveal-inner">
+          <div class="polaroid">
+            <span class="ribbon-deco">🎀</span>
+            <div class="polaroid-photo" id="polaroidPhoto">📷</div>
+            <div class="polaroid-caption">buat kamu &lt;3</div>
+          </div>
+
+          <div class="envelopes">
+            <button class="envelope-btn" id="envelope1">
+              <span class="envelope-icon">💌</span>
+              <span>
+                <div class="envelope-label">Surat Pertama</div>
+                <div class="envelope-sub">Ketuk untuk buka</div>
+              </span>
+            </button>
+            <button class="envelope-btn" id="envelope2" disabled>
+              <span class="envelope-icon">💌</span>
+              <span>
+                <div class="envelope-label">Satu Lagi...</div>
+                <div class="envelope-sub">Buka surat pertama dulu, ya</div>
+              </span>
+            </button>
+          </div>
+
+          <button class="btn-continue" id="continueBtn" disabled>
+            Lanjut &nbsp;🐾
+          </button>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 5: ANSWER ============ -->
+      <div class="scene" id="scene-answer">
+        <div class="answer-card" id="answerCard">
+          <div class="answer-eyebrow">Pertanyaan Terakhir</div>
+          <div class="answer-mascot-pair">
+            <svg viewBox="0 0 100 100" id="mascotAnswerA"></svg>
+            <svg viewBox="0 0 100 100" id="mascotAnswerB"></svg>
+            <span class="answer-heartbeat">💓</span>
+          </div>
+          <div class="answer-question">Jadi... gimana jawaban kamu?</div>
+          <div class="answer-subtext">
+            Nggak ada jawaban yang salah, kok. Aku cuma pengen tahu, boleh nggak
+            aku coba lebih dekat sama kamu?
+          </div>
+          <div class="answer-buttons" id="answerButtons">
+            <button class="btn-yes" id="btnYes">
+              Iya, aku juga suka kamu 🥹💕
+            </button>
+            <button class="btn-no" id="btnNo">
+              Kasih aku waktu dulu, ya 🙈
+            </button>
+          </div>
+          <div class="answer-result-card" id="answerResultCard">
+            <span class="answer-result-icon" id="answerResultIcon">🎉</span>
+            <div class="answer-result-text" id="answerResultText"></div>
+            <div class="answer-result-sub" id="answerResultSub"></div>
+            <div class="reply-box" id="replyBox">
+              <div class="closing-note" id="closingNote">
+                <div class="closing-stars" id="closingStars"></div>
+                <div class="closing-icon">🌙</div>
+                <div class="closing-text" id="closingText"></div>
+                <div class="closing-sig">— dari aku 🤍</div>
+                <button class="btn-wish" id="btnWish">Simpan di hati 🌟</button>
+                <div class="wish-done" id="wishDone"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secret viewer trigger — tiny heart in corner -->
+    <button
+      id="secretBtn"
+      aria-label="Lihat hasil"
+      style="
+        position: fixed;
+        bottom: max(18px, env(safe-area-inset-bottom, 18px));
+        right: 16px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 111, 163, 0.18);
+        font-size: 18px;
+        cursor: pointer;
+        z-index: 50;
+        opacity: 0.45;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        touch-action: manipulation;
+        backdrop-filter: blur(4px);
+      "
+    >
+      💗
+    </button>
+
+    <!-- Secret overlay -->
+    <div
+      id="secretOverlay"
+      style="
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(107, 63, 77, 0.55);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        padding: 0;
+      "
+    >
+      <div
+        id="secretCard"
+        style="
+          background: var(--cream);
+          width: 100%;
+          max-width: 520px;
+          border-radius: 22px 22px 0 0;
+          padding: 28px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+          max-height: 85vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          transform: translateY(50px);
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.22);
+        "
+      >
+        <!-- drag handle -->
+        <div
+          style="
+            width: 40px;
+            height: 4px;
+            background: var(--cocoa-soft);
+            opacity: 0.3;
+            border-radius: 50px;
+            margin: 0 auto 20px;
+          "
+        ></div>
+
+        <!-- Lock screen -->
+        <div id="secretLock">
+          <div style="text-align: center; margin-bottom: 20px">
+            <div style="font-size: 36px; margin-bottom: 8px">🔐</div>
+            <div
+              style="
+                font-family: &quot;Baloo 2&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 18px;
+                color: var(--bubblegum-deep);
+              "
+            >
+              Area Pribadi
+            </div>
+            <div
+              style="
+                font-size: 13px;
+                color: var(--cocoa-soft);
+                font-weight: 600;
+                margin-top: 4px;
+              "
+            >
+              masukkan kode rahasia kamu
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              justify-content: center;
+              margin-bottom: 14px;
+            "
+            id="pinDots"
+          >
+            <div class="pin-dot"></div>
+            <div class="pin-dot"></div>
+            <div class="pin-dot"></div>
+            <div class="pin-dot"></div>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+              max-width: 240px;
+              margin: 0 auto 14px;
+            "
+            id="pinPad"
+          ></div>
+          <div
+            id="pinError"
+            style="
+              text-align: center;
+              font-size: 12px;
+              color: #e0508a;
+              font-weight: 700;
+              min-height: 18px;
+            "
+          ></div>
+        </div>
+
+        <!-- Result screen (hidden until unlocked) -->
+        <div id="secretResult" style="display: none">
+          <div style="text-align: center; margin-bottom: 22px">
+            <div
+              style="
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--bubblegum-deep);
+                background: var(--white);
+                padding: 6px 16px;
+                border-radius: 50px;
+                display: inline-block;
+                box-shadow: 0 4px 12px var(--shadow);
+              "
+            >
+              Hasil Jawaban
+            </div>
+          </div>
+          <div id="resultDisplay"></div>
+          <button
+            onclick="
+              document.getElementById('secretOverlay').style.opacity = 0;
+              document.getElementById('secretOverlay').style.pointerEvents =
+                'none';
+            "
+            style="
+              margin-top: 20px;
+              width: 100%;
+              padding: 13px;
+              border-radius: 50px;
+              border: none;
+              border-bottom: 4px solid #8a6fd9;
+              background: linear-gradient(
+                135deg,
+                var(--lavender),
+                var(--lavender-deep)
+              );
+              color: var(--white);
+              font-family: &quot;Baloo 2&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 15px;
+              cursor: pointer;
+              min-height: 52px;
+            "
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- music via Web Audio API — no file needed -->
+
+    <script>
+      /* ===================== KONFIGURASI — EDIT DI SINI ===================== */
+      const CONFIG = {
+        name: "Nisa",
+        heartsTarget: 14,
+        photoUrl: "",
+        letters: [
+          {
+            title: "Surat Pertama",
+            text: `Halo,
+
+Aku tahu ini mungkin kedengeran aneh, soalnya kita juga belum lama kenal. Tapi entah kenapa, dari pertama kali ketemu kamu, ada sesuatu yang langsung beda. Bukan yang tiba-tiba ngebet atau buru-buru, tapi semacam... aku langsung merhatiin kamu lebih dari yang harusnya buat orang yang baru aku kenal.
+
+Caramu ngomong, caramu ketawa, hal-hal kecil yang kamu certain, semua itu nempel di kepalaku lebih lama dari yang aku duga. Aku jadi sering kepikiran kamu, padahal kita juga belum kenal lama.
+
+Aku tahu suka yang baru tumbuh kayak gini gampang diragukan, takutnya cuma terpukau sebentar lalu hilang. Tapi justru karena itu aku mau bilang dari awal, sebelum semuanya jalan lebih jauh: aku suka kamu, dan aku janji bakal tulus ngejalaninnya, bukan cuma di awal yang masih seru-serunya, tapi juga nanti kalau semuanya udah nggak lagi terasa baru.
+
+Sejujurnya ada juga rasa takut yang bikin aku akhirnya berani nulis ini sekarang, takut kalau aku kelamaan diam, kamu keburu diambil orang lain, dan aku cuma bisa nyesel karena nggak pernah nyoba bilang dari awal. Makanya aku pilih jujur dari sekarang, daripada nanti nyesel "kalau aja aku bilang waktu itu".
+
+Nggak ada maksud buru-buru atau minta kamu langsung yakin secepat aku. Aku cuma pengen kamu tahu, ada yang diam-diam udah suka sama kamu, dan beraninya cuma cukup buat nulis ini sekarang.`,
+          },
+          {
+            title: "Satu Lagi...",
+            text: `Kalau kamu udah baca sampai sini, makasih banyak ya udah mau baca pelan-pelan.
+
+Aku ngerti, kita masih baru kenal, jadi wajar banget kalau kamu butuh waktu buat yakin atau bahkan cuma buat mikir. Aku nggak akan maksa kamu buru-buru jawab atau ngerasa harus suka balik secepat aku.
+
+Tapi kalau boleh jujur, aku pengen lebih dekat sama kamu. Bukan yang langsung jadi apa-apa, cuma pengen lebih sering ngobrol, lebih sering tau cerita harian kamu, lebih sering ada buat kamu kalau kamu butuh. Sesederhana itu aja dulu.
+
+Yang aku mau kamu tahu, apapun rasa yang kamu punya sekarang, aku akan tetap di sini dengan cara yang sama, jujur dan nggak berubah-ubah. Aku nggak akan jadi tulus cuma di awal doang lalu menghilang pas udah nggak seru lagi.
+
+Jadi pelan-pelan aja. Aku yang akan sabar nungguin, sambil terus berusaha jadi orang yang emang pantas buat kamu suka balik.
+
+dari aku, yang baru kenal tapi udah keburu suka, dan pengen lebih dekat sama kamu 🤍`,
+          },
+        ],
+        responses: {
+          yes: "Yeay!! 🎉 makasih udah bilang iya, aku seneng banget!!",
+          no: "Nggak apa-apa, aku tunggu kapan pun kamu siap 🤍",
+        },
+        whatsappNumber: "6281367381826",
+      };
+      /* ======================================================================= */
+
+      document.getElementById("nameDisplay").textContent = CONFIG.name;
+      document.getElementById("heartTarget").textContent = CONFIG.heartsTarget;
+      if (CONFIG.photoUrl) {
+        document.getElementById("polaroidPhoto").innerHTML =
+          `<img src="${CONFIG.photoUrl}" alt="foto">`;
+      }
+
+      /* ============ MASCOT SVG ============ */
+      function catSVG({ furColor, cheeks, expression }) {
+        const eyes = {
+          happy: `<path d="M35 46 Q39 41 43 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M57 46 Q61 41 65 46" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+          excited: `<circle cx="39" cy="45" r="3.4" fill="#3d2630"/><circle cx="61" cy="45" r="3.4" fill="#3d2630"/>
+              <circle cx="40.5" cy="43.5" r="1.1" fill="#fff"/><circle cx="62.5" cy="43.5" r="1.1" fill="#fff"/>`,
+          focus: `<ellipse cx="39" cy="46" rx="2.6" ry="3.6" fill="#3d2630"/><ellipse cx="61" cy="46" rx="2.6" ry="3.6" fill="#3d2630"/>`,
+          shy: `<path d="M35 47 Q39 44 43 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M57 47 Q61 44 65 47" stroke="#3d2630" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+          hopeful: `<circle cx="39" cy="45" r="3.6" fill="#3d2630"/><circle cx="61" cy="45" r="3.6" fill="#3d2630"/>
+              <circle cx="40.7" cy="43" r="1.3" fill="#fff"/><circle cx="62.7" cy="43" r="1.3" fill="#fff"/>`,
+          nervous: `<circle cx="39" cy="46" r="3" fill="#3d2630"/><circle cx="61" cy="46" r="3" fill="#3d2630"/>`,
+        };
+        const mouth = {
+          happy: `<path d="M44 56 Q50 62 56 56" stroke="#3d2630" stroke-width="2.6" fill="none" stroke-linecap="round"/>`,
+          excited: `<path d="M43 55 Q50 65 57 55 Q50 60 43 55" fill="#b5495f"/>`,
+          focus: `<path d="M46 57 Q50 59 54 57" stroke="#3d2630" stroke-width="2.4" fill="none" stroke-linecap="round"/>`,
+          shy: `<path d="M45 57 Q50 60 55 57" stroke="#3d2630" stroke-width="2.4" fill="none" stroke-linecap="round"/>`,
+          hopeful: `<ellipse cx="50" cy="58" rx="4" ry="5" fill="#b5495f"/>`,
+          nervous: `<path d="M45 58 Q50 56 55 58" stroke="#3d2630" stroke-width="2.4" fill="none" stroke-linecap="round"/>`,
+        };
+        const blush = cheeks
+          ? `<ellipse cx="32" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/>
+                          <ellipse cx="68" cy="53" rx="5" ry="3.2" fill="${cheeks}" opacity="0.7"/>`
+          : "";
+        return `
+    <g>
+      <ellipse cx="50" cy="80" rx="26" ry="10" fill="${furColor}" opacity="0.35"/>
+      <path d="M50 20 L38 8 L42 26 Z" fill="${furColor}"/>
+      <path d="M50 20 L62 8 L58 26 Z" fill="${furColor}"/>
+      <path d="M42 14 L38 9 L41 18 Z" fill="#ffe3ee"/>
+      <path d="M58 14 L62 9 L59 18 Z" fill="#ffe3ee"/>
+      <circle cx="50" cy="48" r="30" fill="${furColor}"/>
+      <ellipse cx="50" cy="56" rx="16" ry="13" fill="#fff8f0"/>
+      ${blush}
+      ${eyes[expression]}
+      ${mouth[expression]}
+      <path d="M30 50 Q24 50 20 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+      <path d="M70 50 Q76 50 80 48" stroke="#3d2630" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+    </g>
+  `;
+      }
+
+      const MASCOTS = {
+        pink: (exp) =>
+          catSVG({ furColor: "#ffb8d1", cheeks: "#ff6fa3", expression: exp }),
+        lavender: (exp) =>
+          catSVG({ furColor: "#c9b8ff", cheeks: "#a78bfa", expression: exp }),
+      };
+
+      function mountMascot(elementId, paletteFn, expression) {
+        document.getElementById(elementId).innerHTML = paletteFn(expression);
+      }
+
+      mountMascot("mascotWelcome", MASCOTS.pink, "excited");
+      mountMascot("mascotGameA", MASCOTS.pink, "focus");
+      mountMascot("mascotGameB", MASCOTS.lavender, "focus");
+      mountMascot("mascotLoading", MASCOTS.lavender, "hopeful");
+      mountMascot("mascotAnswerA", MASCOTS.pink, "nervous");
+      mountMascot("mascotAnswerB", MASCOTS.lavender, "shy");
+
+      /* ---- scene switching ---- */
+      function showScene(id) {
+        document
+          .querySelectorAll(".scene")
+          .forEach((s) => s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+      }
+
+      /* ---- petals ---- */
+      function spawnPetals(containerId, symbols, count) {
+        const container = document.getElementById(containerId);
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement("div");
+          p.className = "petal-fall";
+          p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          p.style.left = Math.random() * 100 + "%";
+          p.style.animationDuration = 6 + Math.random() * 6 + "s";
+          p.style.animationDelay = Math.random() * 6 + "s";
+          p.style.fontSize = 14 + Math.random() * 16 + "px";
+          container.appendChild(p);
+        }
+      }
+      spawnPetals("scene-welcome", ["🌸", "💗", "✨", "🐾"], 16);
+
+      /* ---- start ---- */
+      document.getElementById("startBtn").addEventListener("click", () => {
+        startLofiMusic();
+        showScene("scene-game");
+        startGame();
+      });
+
+      /* ---- game ---- */
+      let collected = 0,
+        gameRunning = false,
+        spawnTimer = null;
+      let pointerX = -9999,
+        pointerY = -9999;
+      let activeHearts = [];
+
+      const catchTexts = [
+        "Ketangkep! 🎯",
+        "Gercep banget! ⚡",
+        "Yes! 💕",
+        "Dapet! 🐾",
+        "Hehe kena! 😼",
+      ];
+      const escapeTexts = [
+        "Licik! 😹",
+        "Ngacirrr~ 💨",
+        "Hampir aja!",
+        "Nakal ya! 😼",
+      ];
+
+      function startGame() {
+        if (gameRunning) return;
+        gameRunning = true;
+        collected = 0;
+        activeHearts = [];
+        document.getElementById("heartCount").textContent = collected;
+        document.getElementById("gameProgressFill").style.width = "0%";
+        document.getElementById("gameArea").innerHTML = "";
+        spawnTimer = setInterval(spawnHeart, 520);
+
+        const area = document.getElementById("gameArea");
+        area.addEventListener("mousemove", onPointerMove);
+        area.addEventListener("touchmove", onPointerMove, { passive: true });
+      }
+
+      function onPointerMove(e) {
+        const area = document.getElementById("gameArea");
+        const rect = area.getBoundingClientRect();
+        const point = e.touches ? e.touches[0] : e;
+        pointerX = point.clientX - rect.left;
+        pointerY = point.clientY - rect.top;
+        checkFlee();
+      }
+
+      function checkFlee() {
+        const FLEE_RADIUS = 70;
+        activeHearts.forEach((item) => {
+          if (!item.el.parentNode || item.fleeing || !item.naughty) return;
+          const hx = item.el.offsetLeft + 18,
+            hy = item.el.offsetTop + 18;
+          if (Math.hypot(hx - pointerX, hy - pointerY) < FLEE_RADIUS)
+            fleeHeart(item);
+        });
+      }
+
+      function fleeHeart(item) {
+        const area = document.getElementById("gameArea");
+        const rect = area.getBoundingClientRect();
+        const heart = item.el;
+        item.fleeing = true;
+        heart.classList.add("fleeing");
+        const fromX = heart.offsetLeft,
+          fromY = heart.offsetTop;
+        let dx = fromX - pointerX,
+          dy = fromY - pointerY;
+        const mag = Math.hypot(dx, dy) || 1;
+        dx /= mag;
+        dy /= mag;
+        const jump = 90 + Math.random() * 60;
+        let newX = Math.max(
+          10,
+          Math.min(
+            rect.width - 50,
+            fromX + dx * jump + (Math.random() * 40 - 20),
+          ),
+        );
+        let newY = Math.max(
+          90,
+          Math.min(
+            rect.height - 40,
+            fromY + dy * jump + (Math.random() * 40 - 20),
+          ),
+        );
+        heart.style.left = newX + "px";
+        heart.style.top = newY + "px";
+        if (!item.teased) {
+          item.teased = true;
+          const tease = document.createElement("div");
+          tease.className = "tease-text";
+          tease.textContent =
+            escapeTexts[Math.floor(Math.random() * escapeTexts.length)];
+          tease.style.left = fromX + "px";
+          tease.style.top = fromY - 24 + "px";
+          area.appendChild(tease);
+          setTimeout(() => tease.remove(), 900);
+        }
+        setTimeout(() => {
+          if (heart.parentNode) heart.classList.remove("fleeing");
+          item.fleeing = false;
+        }, 300);
+      }
+
+      function spawnHeart() {
+        if (collected >= CONFIG.heartsTarget) {
+          clearInterval(spawnTimer);
+          return;
+        }
+        const area = document.getElementById("gameArea");
+        const heart = document.createElement("div");
+        const isNaughty = Math.random() < 0.4;
+        heart.className = "floating-heart" + (isNaughty ? " naughty" : "");
+        heart.textContent = isNaughty
+          ? ["😼", "💘", "😹"][Math.floor(Math.random() * 3)]
+          : ["❤️", "💖", "💕"][Math.floor(Math.random() * 3)];
+        const areaRect = area.getBoundingClientRect();
+        const hudH = document.querySelector(".game-hud").offsetHeight + 30;
+        const mascotH = 90;
+        const x = 14 + Math.random() * (areaRect.width - 70);
+        const y =
+          hudH + Math.random() * (areaRect.height - hudH - mascotH - 60);
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.animationDelay = Math.random() * 1.2 + "s";
+
+        const heartItem = {
+          el: heart,
+          naughty: isNaughty,
+          fleeing: false,
+          teased: false,
+        };
+        activeHearts.push(heartItem);
+
+        heart.addEventListener(
+          "click",
+          () => {
+            if (!heart.parentNode) return;
+            collected++;
+            document.getElementById("heartCount").textContent = collected;
+            document.getElementById("gameProgressFill").style.width =
+              (collected / CONFIG.heartsTarget) * 100 + "%";
+            const pop = document.createElement("div");
+            pop.className = "heart-pop";
+            pop.textContent = isNaughty
+              ? catchTexts[Math.floor(Math.random() * catchTexts.length)]
+              : "+1 💗";
+            pop.style.left = heart.style.left;
+            pop.style.top = heart.style.top;
+            area.appendChild(pop);
+            setTimeout(() => pop.remove(), 750);
+            heart.remove();
+            activeHearts = activeHearts.filter((h) => h !== heartItem);
+            if (collected >= CONFIG.heartsTarget) {
+              clearInterval(spawnTimer);
+              mountMascot("mascotGameA", MASCOTS.pink, "excited");
+              mountMascot("mascotGameB", MASCOTS.lavender, "excited");
+              setTimeout(() => {
+                showScene("scene-loading");
+                runLoading();
+              }, 600);
+            }
+          },
+          { once: true },
+        );
+
+        // Touch support for hearts
+        heart.addEventListener(
+          "touchstart",
+          (e) => {
+            e.preventDefault();
+            heart.click();
+          },
+          { passive: false, once: true },
+        );
+
+        area.appendChild(heart);
+        setTimeout(() => {
+          if (heart.parentNode) heart.remove();
+          activeHearts = activeHearts.filter((h) => h !== heartItem);
+        }, 4500);
+      }
+
+      /* ---- loading ---- */
+      const loadingMessages = [
+        "Lagi nyusun kata-kata...",
+        "Nulis ulang biar nggak typo...",
+        "Nambahin sedikit keberanian...",
+        "Hampir selesai...",
+      ];
+      function runLoading() {
+        const fill = document.getElementById("loadingFill");
+        const text = document.getElementById("loadingText");
+        fill.style.width = "0%";
+        let pct = 0,
+          msgIndex = 0;
+        text.textContent = loadingMessages[0];
+        const interval = setInterval(() => {
+          pct += 4 + Math.random() * 6;
+          const newMsgIndex = Math.min(
+            loadingMessages.length - 1,
+            Math.floor((pct / 100) * loadingMessages.length),
+          );
+          if (newMsgIndex !== msgIndex) {
+            msgIndex = newMsgIndex;
+            text.textContent = loadingMessages[msgIndex];
+          }
+          if (pct >= 100) {
+            pct = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+              showScene("scene-reveal");
+              triggerReveal();
+            }, 500);
+          }
+          fill.style.width = pct + "%";
+        }, 160);
+      }
+
+      /* ---- reveal ---- */
+      function triggerReveal() {
+        const toast = document.getElementById("notifToast");
+        setTimeout(() => toast.classList.add("show"), 300);
+        setTimeout(() => toast.classList.remove("show"), 3200);
+      }
+
+      /* ---- letter modal ---- */
+      const overlay = document.createElement("div");
+      overlay.className = "letter-overlay";
+      overlay.id = "letterOverlay";
+      overlay.innerHTML = `
+  <div class="letter-card">
+    <div class="letter-heading" id="letterHeading"></div>
+    <div class="letter-body" id="letterBody"></div>
+    <button class="letter-close" id="letterCloseBtn">Tutup ✓</button>
+  </div>
+`;
+      document.getElementById("app").appendChild(overlay);
+
+      let lettersOpened = 0;
+      function openLetter(index) {
+        const letter = CONFIG.letters[index];
+        document.getElementById("letterHeading").textContent = letter.title;
+        document.getElementById("letterBody").textContent = letter.text;
+        overlay.classList.add("show");
+        if (index === 0) {
+          const env2 = document.getElementById("envelope2");
+          env2.disabled = false;
+          env2.querySelector(".envelope-sub").textContent = "Ketuk untuk buka";
+        }
+        lettersOpened++;
+        if (lettersOpened >= 1)
+          document.getElementById("continueBtn").disabled = false;
+      }
+
+      document
+        .getElementById("envelope1")
+        .addEventListener("click", () => openLetter(0));
+      document
+        .getElementById("envelope2")
+        .addEventListener("click", () => openLetter(1));
+      document
+        .getElementById("letterCloseBtn")
+        .addEventListener("click", () => overlay.classList.remove("show"));
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) overlay.classList.remove("show");
+      });
+
+      // Swipe down to close letter
+      let touchStartY = 0;
+      overlay.querySelector(".letter-card").addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartY = e.touches[0].clientY;
+        },
+        { passive: true },
+      );
+      overlay.querySelector(".letter-card").addEventListener(
+        "touchend",
+        (e) => {
+          if (e.changedTouches[0].clientY - touchStartY > 80)
+            overlay.classList.remove("show");
+        },
+        { passive: true },
+      );
+
+      document
+        .getElementById("continueBtn")
+        .addEventListener("click", () => showScene("scene-answer"));
+
+      /* ---- answer ---- */
+      function spawnConfetti() {
+        const colors = ["#ffb8d1", "#ff6fa3", "#c9b8ff", "#ffd66b", "#b8f2d9"];
+        for (let i = 0; i < 40; i++) {
+          const piece = document.createElement("div");
+          piece.className = "confetti-piece";
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.width = 6 + Math.random() * 6 + "px";
+          piece.style.height = 6 + Math.random() * 6 + "px";
+          piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+          piece.style.animationDuration = 2.4 + Math.random() * 1.8 + "s";
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 4500);
+        }
+      }
+
+      /* ── SAVE / LOAD RESULT ── */
+      const STORAGE_KEY = "utk_kamu_result_v1";
+
+      function saveResult(answer, message) {
+        const data = {
+          answer, // 'yes' | 'no'
+          message: message || "",
+          timestamp: Date.now(),
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) {}
+      }
+
+      function loadResult() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      /* ── YES ── */
+      document.getElementById("btnYes").addEventListener("click", () => {
+        mountMascot("mascotAnswerA", MASCOTS.pink, "excited");
+        mountMascot("mascotAnswerB", MASCOTS.lavender, "excited");
+        document.getElementById("answerButtons").style.display = "none";
+        document.querySelector(".answer-subtext").style.display = "none";
+        document.getElementById("answerResultIcon").textContent = "🎉";
+        document.getElementById("answerResultText").textContent =
+          CONFIG.responses.yes;
+        document.getElementById("answerResultSub").textContent =
+          "mulai dari sekarang, kita coba pelan-pelan ya 🐾";
+        document.getElementById("answerResultCard").classList.add("show");
+        spawnConfetti();
+
+        // Save immediately (no message yet), then show textarea
+        saveResult("yes", "");
+        setTimeout(() => {
+          document.getElementById("yesMessageBox").style.display = "block";
+          document.getElementById("yesTextarea").focus();
+        }, 900);
+      });
+
+      document.getElementById("btnSaveYes").addEventListener("click", () => {
+        const msg = document.getElementById("yesTextarea").value.trim();
+        saveResult("yes", msg);
+        document.getElementById("btnSaveYes").disabled = true;
+        document.getElementById("btnSkipYes").disabled = true;
+        document.getElementById("btnSaveYes").style.opacity = "0.6";
+        document.getElementById("yesSavedNote").style.display = "block";
+        spawnConfetti();
+      });
+
+      document.getElementById("btnSkipYes").addEventListener("click", () => {
+        saveResult("yes", "");
+        document.getElementById("yesMessageBox").style.display = "none";
+      });
+
+      /* ── NO ── */
+      document.getElementById("btnNo").addEventListener("click", () => {
+        mountMascot("mascotAnswerA", MASCOTS.pink, "shy");
+        mountMascot("mascotAnswerB", MASCOTS.lavender, "focus");
+        document.getElementById("answerButtons").style.display = "none";
+        document.querySelector(".answer-subtext").style.display = "none";
+        document.getElementById("answerResultIcon").textContent = "🤍";
+        document.getElementById("answerResultText").textContent =
+          CONFIG.responses.no;
+        document.getElementById("answerResultSub").textContent =
+          "nggak ada paksaan, take your time aja";
+        document.getElementById("answerResultCard").classList.add("show");
+        document.getElementById("replyBox").classList.add("show");
+        saveResult("no", "");
+        showClosingNote();
+      });
+
+      /* ── SECRET VIEWER ── */
+      const SECRET_PIN = "0612"; // ganti PIN ini — tanggal lahir kamu atau angka spesial
+      let pinInput = "";
+
+      // Build numpad
+      const pinPad = document.getElementById("pinPad");
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, "✕", 0, "⌫"].forEach((n) => {
+        const btn = document.createElement("button");
+        btn.textContent = n;
+        btn.style.cssText = `
+    font-family:'Baloo 2',sans-serif;font-weight:700;font-size:20px;
+    padding:14px;border-radius:16px;border:none;
+    background:var(--white);color:var(--cocoa);
+    box-shadow:0 4px 12px var(--shadow);cursor:pointer;
+    touch-action:manipulation;transition:transform 0.15s ease;
+    min-height:52px;
+  `;
+        btn.addEventListener("click", () => handlePin(String(n)));
+        btn.addEventListener(
+          "touchstart",
+          () => {
+            btn.style.transform = "scale(0.93)";
+          },
+          { passive: true },
+        );
+        btn.addEventListener(
+          "touchend",
+          () => {
+            btn.style.transform = "scale(1)";
+          },
+          { passive: true },
+        );
+        pinPad.appendChild(btn);
+      });
+
+      function updateDots() {
+        document.querySelectorAll(".pin-dot").forEach((d, i) => {
+          d.style.background =
+            i < pinInput.length ? "var(--bubblegum-deep)" : "var(--cream-deep)";
+          d.style.transform =
+            i === pinInput.length - 1 ? "scale(1.25)" : "scale(1)";
+        });
+      }
+
+      function handlePin(key) {
+        const err = document.getElementById("pinError");
+        err.textContent = "";
+        if (key === "✕") {
+          pinInput = "";
+          updateDots();
+          return;
+        }
+        if (key === "⌫") {
+          pinInput = pinInput.slice(0, -1);
+          updateDots();
+          return;
+        }
+        if (pinInput.length >= 4) return;
+        pinInput += key;
+        updateDots();
+        if (pinInput.length === 4) {
+          if (pinInput === SECRET_PIN) {
+            showSecretResult();
+          } else {
+            err.textContent = "PIN salah, coba lagi";
+            pinInput = "";
+            setTimeout(updateDots, 500);
+          }
+        }
+      }
+
+      function showSecretResult() {
+        document.getElementById("secretLock").style.display = "none";
+        document.getElementById("secretResult").style.display = "block";
+
+        const data = loadResult();
+        const el = document.getElementById("resultDisplay");
+
+        if (!data) {
+          el.innerHTML = `
+      <div style="text-align:center;padding:20px 0;">
+        <div style="font-size:38px;margin-bottom:12px;">⏳</div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:17px;color:var(--cocoa);">Belum ada jawaban</div>
+        <div style="font-size:13px;color:var(--cocoa-soft);font-weight:600;margin-top:6px;">dia belum sampai di bagian akhir</div>
+      </div>`;
+          return;
+        }
+
+        const isYes = data.answer === "yes";
+        const time = new Date(data.timestamp).toLocaleString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        el.innerHTML = `
+    <div style="
+      background:${isYes ? "linear-gradient(135deg,#fff0f6,#fce4ff)" : "linear-gradient(135deg,#f0f4ff,#e8f0ff)"};
+      border-radius:18px; padding:22px 18px; text-align:center; margin-bottom:16px;
+    ">
+      <div style="font-size:44px;margin-bottom:10px;">${isYes ? "🎉" : "🤍"}</div>
+      <div style="
+        font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;
+        color:${isYes ? "var(--bubblegum-deep)" : "var(--lavender-deep)"};
+        margin-bottom:6px;
+      ">${isYes ? "DIA MENERIMAMU!" : "Butuh Waktu Dulu"}</div>
+      <div style="font-size:12px;color:var(--cocoa-soft);font-weight:600;">${time}</div>
+    </div>
+
+    ${
+      data.message
+        ? `
+    <div style="background:var(--white);border-radius:16px;padding:18px;margin-bottom:10px;box-shadow:0 6px 18px var(--shadow);">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cocoa-soft);margin-bottom:10px;">
+        ${isYes ? "💬 Pesannya untukmu" : "💬 Pesannya"}
+      </div>
+      <div style="
+        font-family:'Quicksand',sans-serif;font-size:15px;
+        line-height:1.8;color:var(--cocoa);font-weight:600;
+        font-style:italic;
+      ">"${data.message}"</div>
+    </div>`
+        : `
+    <div style="text-align:center;font-size:13px;color:var(--cocoa-soft);font-weight:600;padding:8px 0;">
+      ${isYes ? "dia memilih untuk tidak nulis pesan, tapi jawabannya sudah cukup bilang semuanya 🌸" : "dia belum meninggalkan pesan apapun"}
+    </div>`
+    }
+  `;
+      }
+
+      // Secret button: show/hide overlay
+      const secretBtn = document.getElementById("secretBtn");
+      const secretOverlay = document.getElementById("secretOverlay");
+      const secretCard = document.getElementById("secretCard");
+
+      secretBtn.addEventListener("click", () => {
+        pinInput = "";
+        updateDots();
+        document.getElementById("pinError").textContent = "";
+        document.getElementById("secretLock").style.display = "block";
+        document.getElementById("secretResult").style.display = "none";
+        secretOverlay.style.opacity = "1";
+        secretOverlay.style.pointerEvents = "auto";
+        secretCard.style.transform = "translateY(0)";
+      });
+
+      secretOverlay.addEventListener("click", (e) => {
+        if (e.target === secretOverlay) {
+          secretOverlay.style.opacity = "0";
+          secretOverlay.style.pointerEvents = "none";
+        }
+      });
+
+      // Swipe down to close secret card
+      let secTouchY = 0;
+      secretCard.addEventListener(
+        "touchstart",
+        (e) => {
+          secTouchY = e.touches[0].clientY;
+        },
+        { passive: true },
+      );
+      secretCard.addEventListener(
+        "touchend",
+        (e) => {
+          if (e.changedTouches[0].clientY - secTouchY > 80) {
+            secretOverlay.style.opacity = "0";
+            secretOverlay.style.pointerEvents = "none";
+          }
+        },
+        { passive: true },
+      );
+
+      // Add pin-dot style
+      const dotStyle = document.createElement("style");
+      dotStyle.textContent = `.pin-dot{width:14px;height:14px;border-radius:50%;background:var(--cream-deep);transition:background 0.2s ease,transform 0.15s ease;}`;
+      document.head.appendChild(dotStyle);
+
+      // Hover effect on secret button
+      secretBtn.addEventListener("mouseenter", () => {
+        secretBtn.style.opacity = "0.9";
+      });
+      secretBtn.addEventListener("mouseleave", () => {
+        secretBtn.style.opacity = "0.45";
+      });
+
+      /* ============================================================
+   LOFI MUSIC ENGINE — Web Audio API
+   Vibe: cozy romantic lofi, soft piano chords + gentle beat
+   ============================================================ */
+      let audioCtx = null;
+      let musicPlaying = false;
+      let scheduledNodes = [];
+      let lofiInterval = null;
+
+      function startLofiMusic() {
+        if (musicPlaying) return;
+        musicPlaying = true;
+
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Master gain (soft volume)
+        const master = audioCtx.createGain();
+        master.gain.setValueAtTime(0, audioCtx.currentTime);
+        master.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 2.5);
+        master.connect(audioCtx.destination);
+
+        // Reverb (convolver with synthetic impulse)
+        const convolver = audioCtx.createConvolver();
+        convolver.buffer = makeReverb(audioCtx, 2.2, 3000);
+        convolver.connect(master);
+
+        // Reverb mix gain
+        const reverbGain = audioCtx.createGain();
+        reverbGain.gain.value = 0.38;
+        reverbGain.connect(master);
+
+        // Dry signal gain
+        const dryGain = audioCtx.createGain();
+        dryGain.gain.value = 0.62;
+        dryGain.connect(master);
+
+        // Low-pass filter (lofi warmth)
+        const lpf = audioCtx.createBiquadFilter();
+        lpf.type = "lowpass";
+        lpf.frequency.value = 3800;
+        lpf.Q.value = 0.7;
+        lpf.connect(dryGain);
+        lpf.connect(reverbGain);
+
+        // Vinyl noise
+        makeVinylNoise(audioCtx, master);
+
+        // Chord progression: Cmaj7 → Am7 → Fmaj7 → G7 (lofi classic)
+        // Frequencies in Hz for each chord (root + 3rd + 5th + 7th, spread over octaves)
+        const chords = [
+          // Cmaj7
+          [130.81, 164.81, 196.0, 246.94, 329.63],
+          // Am7
+          [110.0, 146.83, 174.61, 220.0, 261.63],
+          // Fmaj7
+          [87.31, 130.81, 164.81, 196.0, 261.63],
+          // G7
+          [98.0, 146.83, 174.61, 196.0, 246.94],
+        ];
+
+        const BPM = 72;
+        const beat = 60 / BPM; // seconds per beat
+        const bar = beat * 4; // 1 bar = 4 beats
+        const chordDur = bar * 2; // each chord lasts 2 bars
+
+        let startTime = audioCtx.currentTime + 0.1;
+        let chordIndex = 0;
+
+        function scheduleBlock() {
+          const chord = chords[chordIndex % chords.length];
+
+          // Piano chord stabs (soft, spread attack)
+          chord.forEach((freq, i) => {
+            const t = startTime + i * 0.04; // stagger notes slightly (arpeggio hint)
+            schedulePianoNote(
+              audioCtx,
+              lpf,
+              freq,
+              t,
+              chordDur * 0.85,
+              0.13 - i * 0.01,
+            );
+          });
+
+          // Melody note on top (simple, one note per chord)
+          const melodyNotes = [523.25, 493.88, 523.25, 587.33]; // C5, B4, C5, D5
+          schedulePianoNote(
+            audioCtx,
+            lpf,
+            melodyNotes[chordIndex % 4],
+            startTime + beat * 0.5,
+            beat * 1.6,
+            0.18,
+          );
+          // Melody answer phrase
+          schedulePianoNote(
+            audioCtx,
+            lpf,
+            melodyNotes[(chordIndex + 1) % 4],
+            startTime + beat * 2.5,
+            beat * 1.2,
+            0.14,
+          );
+
+          // Bass note (root, one octave below chord root)
+          scheduleBassNote(
+            audioCtx,
+            lpf,
+            chord[0] * 0.5,
+            startTime,
+            chordDur * 0.9,
+            0.22,
+          );
+
+          // Lofi beat (kick + snare + hihat)
+          scheduleLofiDrum(audioCtx, master, startTime, chordDur, BPM);
+
+          startTime += chordDur;
+          chordIndex++;
+        }
+
+        // Schedule first few blocks immediately, then keep going
+        for (let i = 0; i < 3; i++) scheduleBlock();
+
+        lofiInterval = setInterval(
+          () => {
+            if (!musicPlaying) {
+              clearInterval(lofiInterval);
+              return;
+            }
+            scheduleBlock();
+          },
+          chordDur * 1000 * 0.85,
+        ); // slightly early to avoid gaps
+      }
+
+      function schedulePianoNote(ctx, dest, freq, startTime, dur, vol) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "triangle";
+        osc.frequency.value = freq;
+
+        // Slight detune for warmth
+        osc.detune.value = (Math.random() - 0.5) * 8;
+
+        gain.gain.setValueAtTime(0, startTime);
+        gain.gain.linearRampToValueAtTime(vol, startTime + 0.02);
+        gain.gain.setValueAtTime(vol * 0.6, startTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
+
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(startTime);
+        osc.stop(startTime + dur + 0.05);
+      }
+
+      function scheduleBassNote(ctx, dest, freq, startTime, dur, vol) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.value = freq;
+
+        gain.gain.setValueAtTime(0, startTime);
+        gain.gain.linearRampToValueAtTime(vol, startTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + dur);
+
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(startTime);
+        osc.stop(startTime + dur + 0.05);
+      }
+
+      function scheduleLofiDrum(ctx, dest, startTime, barDur, bpm) {
+        const beat = 60 / bpm;
+
+        // Kick: beats 1 and 3
+        [0, beat * 2].forEach((t) => scheduleKick(ctx, dest, startTime + t));
+
+        // Snare: beats 2 and 4
+        [beat, beat * 3].forEach((t) =>
+          scheduleSnare(ctx, dest, startTime + t),
+        );
+
+        // Hihat: every half-beat, slightly humanised
+        for (let i = 0; i < 8; i++) {
+          const t = startTime + i * beat * 0.5 + (Math.random() - 0.5) * 0.018;
+          const vol = i % 2 === 0 ? 0.12 : 0.07;
+          scheduleHihat(ctx, dest, t, vol);
+        }
+      }
+
+      function scheduleKick(ctx, dest, t) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(140, t);
+        osc.frequency.exponentialRampToValueAtTime(40, t + 0.12);
+        gain.gain.setValueAtTime(0.5, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+        osc.connect(gain);
+        gain.connect(dest);
+        osc.start(t);
+        osc.stop(t + 0.3);
+      }
+
+      function scheduleSnare(ctx, dest, t) {
+        const noise = ctx.createBufferSource();
+        const buf = ctx.createBuffer(1, ctx.sampleRate * 0.18, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+        noise.buffer = buf;
+
+        const snareFilter = ctx.createBiquadFilter();
+        snareFilter.type = "bandpass";
+        snareFilter.frequency.value = 1800;
+        snareFilter.Q.value = 0.6;
+
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.18, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+
+        noise.connect(snareFilter);
+        snareFilter.connect(gain);
+        gain.connect(dest);
+        noise.start(t);
+        noise.stop(t + 0.2);
+      }
+
+      function scheduleHihat(ctx, dest, t, vol) {
+        const noise = ctx.createBufferSource();
+        const buf = ctx.createBuffer(1, ctx.sampleRate * 0.06, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+        noise.buffer = buf;
+
+        const hpf = ctx.createBiquadFilter();
+        hpf.type = "highpass";
+        hpf.frequency.value = 8000;
+
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(vol, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+
+        noise.connect(hpf);
+        hpf.connect(gain);
+        gain.connect(dest);
+        noise.start(t);
+        noise.stop(t + 0.07);
+      }
+
+      function makeVinylNoise(ctx, dest) {
+        const bufferSize = ctx.sampleRate * 4;
+        const buf = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+
+        const lpf = ctx.createBiquadFilter();
+        lpf.type = "lowpass";
+        lpf.frequency.value = 800;
+
+        const gain = ctx.createGain();
+        gain.gain.value = 0.018;
+
+        src.connect(lpf);
+        lpf.connect(gain);
+        gain.connect(dest);
+        src.start();
+      }
+
+      function makeReverb(ctx, duration, decay) {
+        const sampleRate = ctx.sampleRate;
+        const length = sampleRate * duration;
+        const impulse = ctx.createBuffer(2, length, sampleRate);
+        for (let c = 0; c < 2; c++) {
+          const ch = impulse.getChannelData(c);
+          for (let i = 0; i < length; i++) {
+            ch[i] =
+              (Math.random() * 2 - 1) *
+              Math.pow(1 - i / length, decay / duration);
+          }
+        }
+        return impulse;
+      }
+
+      /* ======================================================================= */
+      const closingMessages = [
+        "Nggak apa-apa, aku ngerti sepenuhnya.\nKamu nggak perlu terburu-buru buat ngerasa yakin sama siapapun, termasuk sama aku.",
+        "Waktu adalah hal yang wajar untuk diminta.\nAku tetap di sini, dengan cara yang sama, tanpa buru-buru dan tanpa berubah.",
+        "Makasih udah jujur, itu yang paling berharga buat aku.\nPerasaan nggak bisa dipaksa, dan aku nggak akan pernah nyoba maksa kamu.",
+      ];
+
+      function typeText(el, text, speed, cb) {
+        el.textContent = "";
+        let i = 0;
+        const interval = setInterval(() => {
+          el.textContent += text[i];
+          i++;
+          if (i >= text.length) {
+            clearInterval(interval);
+            if (cb) cb();
+          }
+        }, speed);
+      }
+
+      function spawnClosingStars() {
+        const container = document.getElementById("closingStars");
+        container.innerHTML = "";
+        const symbols = ["✦", "✧", "⋆", "˚", "·"];
+        for (let i = 0; i < 18; i++) {
+          const s = document.createElement("span");
+          s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          s.style.cssText = `
+      position:absolute;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      font-size:${8 + Math.random() * 10}px;
+      color: var(--lavender-deep);
+      opacity:${0.2 + Math.random() * 0.5};
+      animation: star-twinkle ${1.5 + Math.random() * 2}s ease-in-out infinite;
+      animation-delay:${Math.random() * 2}s;
+      pointer-events:none;
+    `;
+          container.appendChild(s);
+        }
+      }
+
+      function showClosingNote() {
+        spawnClosingStars();
+        const msg =
+          closingMessages[Math.floor(Math.random() * closingMessages.length)];
+        const el = document.getElementById("closingText");
+        setTimeout(() => typeText(el, msg, 28), 400);
+      }
+
+      document.getElementById("btnWish").addEventListener("click", () => {
+        const btn = document.getElementById("btnWish");
+        btn.style.display = "none";
+        const done = document.getElementById("wishDone");
+        done.classList.add("show");
+        done.textContent = "";
+
+        spawnConfetti();
+
+        const wishText =
+          "udah disimpen. makasih udah mau buka halaman ini sampai akhir 🌸";
+        typeText(done, wishText, 35);
+      });
+    </script>
+  </body>
+</html>
